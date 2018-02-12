@@ -7,31 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BBBA28920320120001D1ED5 /* EmotionCaptcha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA28820320120001D1ED5 /* EmotionCaptcha.m */; };
-		3BBBA28A20320120001D1ED5 /* EmotionCaptcha.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3BBBA28720320120001D1ED5 /* EmotionCaptcha.h */; };
+		3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */; };
+		3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		3BBBA28220320120001D1ED5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				3BBBA28A20320120001D1ED5 /* EmotionCaptcha.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		3BBBA28420320120001D1ED5 /* libEmotionCaptcha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEmotionCaptcha.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BBBA28720320120001D1ED5 /* EmotionCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmotionCaptcha.h; sourceTree = "<group>"; };
-		3BBBA28820320120001D1ED5 /* EmotionCaptcha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmotionCaptcha.m; sourceTree = "<group>"; };
+		3BBBA2A1203203C0001D1ED5 /* EmotionCaptcha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmotionCaptcha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmotionCaptcha.h; sourceTree = "<group>"; };
+		3BBBA2A5203203C0001D1ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPTCHAView.h; sourceTree = "<group>"; };
+		3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPTCHAView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3BBBA28120320120001D1ED5 /* Frameworks */ = {
+		3BBBA29D203203C0001D1ED5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,41 +31,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3BBBA27B20320120001D1ED5 = {
+		3BBBA297203203C0001D1ED5 = {
 			isa = PBXGroup;
 			children = (
-				3BBBA28620320120001D1ED5 /* EmotionCaptcha */,
-				3BBBA28520320120001D1ED5 /* Products */,
+				3BBBA2A3203203C0001D1ED5 /* EmotionCaptcha */,
+				3BBBA2A2203203C0001D1ED5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3BBBA28520320120001D1ED5 /* Products */ = {
+		3BBBA2A2203203C0001D1ED5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3BBBA28420320120001D1ED5 /* libEmotionCaptcha.a */,
+				3BBBA2A1203203C0001D1ED5 /* EmotionCaptcha.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3BBBA28620320120001D1ED5 /* EmotionCaptcha */ = {
+		3BBBA2A3203203C0001D1ED5 /* EmotionCaptcha */ = {
 			isa = PBXGroup;
 			children = (
-				3BBBA28720320120001D1ED5 /* EmotionCaptcha.h */,
-				3BBBA28820320120001D1ED5 /* EmotionCaptcha.m */,
+				3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */,
+				3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */,
+				3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */,
+				3BBBA2A5203203C0001D1ED5 /* Info.plist */,
 			);
 			path = EmotionCaptcha;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3BBBA29E203203C0001D1ED5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */,
+				3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		3BBBA28320320120001D1ED5 /* EmotionCaptcha */ = {
+		3BBBA2A0203203C0001D1ED5 /* EmotionCaptcha */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BBBA28D20320120001D1ED5 /* Build configuration list for PBXNativeTarget "EmotionCaptcha" */;
+			buildConfigurationList = 3BBBA2A9203203C0001D1ED5 /* Build configuration list for PBXNativeTarget "EmotionCaptcha" */;
 			buildPhases = (
-				3BBBA28020320120001D1ED5 /* Sources */,
-				3BBBA28120320120001D1ED5 /* Frameworks */,
-				3BBBA28220320120001D1ED5 /* CopyFiles */,
+				3BBBA29C203203C0001D1ED5 /* Sources */,
+				3BBBA29D203203C0001D1ED5 /* Frameworks */,
+				3BBBA29E203203C0001D1ED5 /* Headers */,
+				3BBBA29F203203C0001D1ED5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -83,54 +88,64 @@
 			);
 			name = EmotionCaptcha;
 			productName = EmotionCaptcha;
-			productReference = 3BBBA28420320120001D1ED5 /* libEmotionCaptcha.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 3BBBA2A1203203C0001D1ED5 /* EmotionCaptcha.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3BBBA27C20320120001D1ED5 /* Project object */ = {
+		3BBBA298203203C0001D1ED5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Daniel Strebinger";
 				TargetAttributes = {
-					3BBBA28320320120001D1ED5 = {
+					3BBBA2A0203203C0001D1ED5 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 3BBBA27F20320120001D1ED5 /* Build configuration list for PBXProject "EmotionCaptcha" */;
+			buildConfigurationList = 3BBBA29B203203C0001D1ED5 /* Build configuration list for PBXProject "EmotionCaptcha" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 3BBBA27B20320120001D1ED5;
-			productRefGroup = 3BBBA28520320120001D1ED5 /* Products */;
+			mainGroup = 3BBBA297203203C0001D1ED5;
+			productRefGroup = 3BBBA2A2203203C0001D1ED5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3BBBA28320320120001D1ED5 /* EmotionCaptcha */,
+				3BBBA2A0203203C0001D1ED5 /* EmotionCaptcha */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		3BBBA29F203203C0001D1ED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		3BBBA28020320120001D1ED5 /* Sources */ = {
+		3BBBA29C203203C0001D1ED5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BBBA28920320120001D1ED5 /* EmotionCaptcha.m in Sources */,
+				3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		3BBBA28B20320120001D1ED5 /* Debug */ = {
+		3BBBA2A7203203C0001D1ED5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -161,6 +176,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -182,10 +198,12 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		3BBBA28C20320120001D1ED5 /* Release */ = {
+		3BBBA2A8203203C0001D1ED5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -216,6 +234,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -231,28 +250,46 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		3BBBA28E20320120001D1ED5 /* Debug */ = {
+		3BBBA2AA203203C0001D1ED5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3JV8N6Z56K;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EmotionCaptcha/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.strebinger.EmotionCaptcha;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		3BBBA28F20320120001D1ED5 /* Release */ = {
+		3BBBA2AB203203C0001D1ED5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3JV8N6Z56K;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EmotionCaptcha/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.strebinger.EmotionCaptcha;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -261,25 +298,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3BBBA27F20320120001D1ED5 /* Build configuration list for PBXProject "EmotionCaptcha" */ = {
+		3BBBA29B203203C0001D1ED5 /* Build configuration list for PBXProject "EmotionCaptcha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3BBBA28B20320120001D1ED5 /* Debug */,
-				3BBBA28C20320120001D1ED5 /* Release */,
+				3BBBA2A7203203C0001D1ED5 /* Debug */,
+				3BBBA2A8203203C0001D1ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BBBA28D20320120001D1ED5 /* Build configuration list for PBXNativeTarget "EmotionCaptcha" */ = {
+		3BBBA2A9203203C0001D1ED5 /* Build configuration list for PBXNativeTarget "EmotionCaptcha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3BBBA28E20320120001D1ED5 /* Debug */,
-				3BBBA28F20320120001D1ED5 /* Release */,
+				3BBBA2AA203203C0001D1ED5 /* Debug */,
+				3BBBA2AB203203C0001D1ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3BBBA27C20320120001D1ED5 /* Project object */;
+	rootObject = 3BBBA298203203C0001D1ED5 /* Project object */;
 }
