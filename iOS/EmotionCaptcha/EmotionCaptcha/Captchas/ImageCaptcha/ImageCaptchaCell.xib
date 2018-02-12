@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PI0-NK-CGX">
+            <rect key="frame" x="0.0" y="0.0" width="194" height="147"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="194" height="147"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z9A-ru-npn">
+                        <rect key="frame" x="0.0" y="0.0" width="194" height="147"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.35956897830000001" green="0.81772182640000002" blue="0.35706642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="z9A-ru-npn" secondAttribute="trailing" id="CvS-vO-mvQ"/>
+                <constraint firstItem="z9A-ru-npn" firstAttribute="leading" secondItem="PI0-NK-CGX" secondAttribute="leading" id="DGJ-CV-U55"/>
+                <constraint firstItem="z9A-ru-npn" firstAttribute="top" secondItem="PI0-NK-CGX" secondAttribute="top" id="ILL-FB-fX6"/>
+                <constraint firstAttribute="bottom" secondItem="z9A-ru-npn" secondAttribute="bottom" id="bep-sL-3az"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="jdJ-Jb-vZK"/>
+            <size key="customSize" width="194" height="147"/>
+            <point key="canvasLocation" x="38" y="13.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CaptchaProtocol.h"
+#import "CaptchaTypes.h"
+#import "ImageCaptcha.h"
 
 @interface CAPTCHAView : UIView
 

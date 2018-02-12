@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */; };
+		3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */; };
+		3BBBA2B720320905001D1ED5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BBBA2B620320905001D1ED5 /* UIKit.framework */; };
+		3BBBA2E120321461001D1ED5 /* ImageCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2DF20321461001D1ED5 /* ImageCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BBBA2E220321461001D1ED5 /* ImageCaptcha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E020321461001D1ED5 /* ImageCaptcha.m */; };
+		3BBBA2E42032146C001D1ED5 /* ImageCaptcha.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E32032146C001D1ED5 /* ImageCaptcha.xib */; };
+		3BBBA2E6203216DF001D1ED5 /* CaptchaTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2E5203216A8001D1ED5 /* CaptchaTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BBBA2E820321979001D1ED5 /* CaptchaProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2E7203218AC001D1ED5 /* CaptchaProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BBBA2EA20322527001D1ED5 /* ImageCaptchaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +25,13 @@
 		3BBBA2A5203203C0001D1ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPTCHAView.h; sourceTree = "<group>"; };
 		3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPTCHAView.m; sourceTree = "<group>"; };
+		3BBBA2B620320905001D1ED5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3BBBA2DF20321461001D1ED5 /* ImageCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCaptcha.h; sourceTree = "<group>"; };
+		3BBBA2E020321461001D1ED5 /* ImageCaptcha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCaptcha.m; sourceTree = "<group>"; };
+		3BBBA2E32032146C001D1ED5 /* ImageCaptcha.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCaptcha.xib; sourceTree = "<group>"; };
+		3BBBA2E5203216A8001D1ED5 /* CaptchaTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaTypes.h; sourceTree = "<group>"; };
+		3BBBA2E7203218AC001D1ED5 /* CaptchaProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaProtocol.h; sourceTree = "<group>"; };
+		3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCaptchaCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBBA2B720320905001D1ED5 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +51,7 @@
 			children = (
 				3BBBA2A3203203C0001D1ED5 /* EmotionCaptcha */,
 				3BBBA2A2203203C0001D1ED5 /* Products */,
+				3BBBA2B520320905001D1ED5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,12 +66,50 @@
 		3BBBA2A3203203C0001D1ED5 /* EmotionCaptcha */ = {
 			isa = PBXGroup;
 			children = (
+				3BBBA2DD2032143A001D1ED5 /* Captchas */,
+				3BBBA2B2203205C0001D1ED5 /* CaptchaView */,
 				3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */,
-				3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */,
-				3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */,
 				3BBBA2A5203203C0001D1ED5 /* Info.plist */,
+				3BBBA2E5203216A8001D1ED5 /* CaptchaTypes.h */,
+				3BBBA2E7203218AC001D1ED5 /* CaptchaProtocol.h */,
 			);
 			path = EmotionCaptcha;
+			sourceTree = "<group>";
+		};
+		3BBBA2B2203205C0001D1ED5 /* CaptchaView */ = {
+			isa = PBXGroup;
+			children = (
+				3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */,
+				3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */,
+			);
+			path = CaptchaView;
+			sourceTree = "<group>";
+		};
+		3BBBA2B520320905001D1ED5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BBBA2B620320905001D1ED5 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BBBA2DD2032143A001D1ED5 /* Captchas */ = {
+			isa = PBXGroup;
+			children = (
+				3BBBA2DE20321445001D1ED5 /* ImageCaptcha */,
+			);
+			path = Captchas;
+			sourceTree = "<group>";
+		};
+		3BBBA2DE20321445001D1ED5 /* ImageCaptcha */ = {
+			isa = PBXGroup;
+			children = (
+				3BBBA2DF20321461001D1ED5 /* ImageCaptcha.h */,
+				3BBBA2E020321461001D1ED5 /* ImageCaptcha.m */,
+				3BBBA2E32032146C001D1ED5 /* ImageCaptcha.xib */,
+				3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */,
+			);
+			path = ImageCaptcha;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,7 +119,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBBA2E820321979001D1ED5 /* CaptchaProtocol.h in Headers */,
 				3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */,
+				3BBBA2E120321461001D1ED5 /* ImageCaptcha.h in Headers */,
+				3BBBA2E6203216DF001D1ED5 /* CaptchaTypes.h in Headers */,
 				3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +185,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBBA2EA20322527001D1ED5 /* ImageCaptchaCell.xib in Resources */,
+				3BBBA2E42032146C001D1ED5 /* ImageCaptcha.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBBA2E220321461001D1ED5 /* ImageCaptcha.m in Sources */,
 				3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +325,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../EmotionCaptcha";
 				INFOPLIST_FILE = EmotionCaptcha/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -285,6 +346,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../EmotionCaptcha";
 				INFOPLIST_FILE = EmotionCaptcha/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
