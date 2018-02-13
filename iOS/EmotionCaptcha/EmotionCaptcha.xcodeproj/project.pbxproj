@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B463C9B2032D8AC0064984B /* beach-tracks_b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B463C9A2032D8AC0064984B /* beach-tracks_b.jpg */; };
 		3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B463C9A2032D8AC0064984B /* beach-tracks_b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "beach-tracks_b.jpg"; sourceTree = "<group>"; };
 		3BBBA2A1203203C0001D1ED5 /* EmotionCaptcha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmotionCaptcha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmotionCaptcha.h; sourceTree = "<group>"; };
 		3BBBA2A5203203C0001D1ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		3BBBA2A3203203C0001D1ED5 /* EmotionCaptcha */ = {
 			isa = PBXGroup;
 			children = (
+				3B463C9A2032D8AC0064984B /* beach-tracks_b.jpg */,
 				3BBBA2DD2032143A001D1ED5 /* Captchas */,
 				3BBBA2B2203205C0001D1ED5 /* CaptchaView */,
 				3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */,
@@ -185,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B463C9B2032D8AC0064984B /* beach-tracks_b.jpg in Resources */,
 				3BBBA2EA20322527001D1ED5 /* ImageCaptchaCell.xib in Resources */,
 				3BBBA2E42032146C001D1ED5 /* ImageCaptcha.xib in Resources */,
 			);
