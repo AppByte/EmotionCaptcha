@@ -18,6 +18,7 @@
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
+    [self configureView];
 }
 
 
@@ -33,11 +34,10 @@
 -(void)configureView {
     [[NSBundle bundleForClass:[ImageCaptcha self]] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
     [self addSubview:self.captchaView];
-    [self.captchaView setFrame:self.frame];
-    self.collectionView.frame = CGRectMake(35, 150, 345, 345);
     self.collectionView.scrollEnabled = false;
     [self.collectionView registerNib:[UINib nibWithNibName:@"ImageCaptchaCell" bundle:[NSBundle bundleForClass:[ImageCaptcha self]]] forCellWithReuseIdentifier:@"Cell"];
-    [self.collectionViewFlowLayout  setItemSize:CGSizeMake(170, 170)];
+    [self.collectionViewFlowLayout  setItemSize:CGSizeMake(137, 137)];
+    [self.collectionViewFlowLayout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 10)];
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section

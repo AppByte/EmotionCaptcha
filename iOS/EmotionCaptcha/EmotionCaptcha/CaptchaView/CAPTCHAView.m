@@ -19,11 +19,13 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
+    NSLog(@"%@", NSStringFromCGRect(self.frame));
     [self configureView];
     return self;
 }
 
 -(id)initWithFrame:(CGRect)frame {
+    NSLog(@"%@", NSStringFromCGRect(self.frame));
     self = [super initWithFrame:frame];
     [self configureView];
     return self;
