@@ -13,22 +13,11 @@
         <!--CAPTCHA-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CAPTCHAViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDW-IT-DaN" customClass="CAPTCHAView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="UDW-IT-DaN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="73t-Gh-2h8"/>
-                            <constraint firstItem="UDW-IT-DaN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QLd-9I-1Lu"/>
-                            <constraint firstItem="UDW-IT-DaN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="f26-SF-n2v"/>
-                            <constraint firstItem="UDW-IT-DaN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="l7Q-JJ-39t"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="CAPTCHA" id="Cud-eO-LWw"/>

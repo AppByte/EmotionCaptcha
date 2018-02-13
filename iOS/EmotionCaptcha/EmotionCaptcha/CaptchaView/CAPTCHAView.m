@@ -11,7 +11,7 @@
 @interface CAPTCHAView()
 @property (strong, nonatomic) IBOutlet UIView *captchaView;
 @property CaptchaTypes currentCaptchaType;
-@property UIView<CaptchaProtocol> *currentCaptcha;
+@property CaptchaControl *captchaControl;
 @end
 
 @implementation CAPTCHAView
@@ -44,7 +44,7 @@
  */
 -(void)configureView {
     
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:[ImageCaptcha self]];
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[CaptchaControl self]];
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"beach-tracks_b.jpg" inBundle:frameworkBundle compatibleWithTraitCollection:nil]];
     [self addSubview:backgroundView];
     [frameworkBundle loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
@@ -62,14 +62,9 @@
         self.currentCaptchaType = IMAGECAPTCHA;
     }
     
-    switch (self.currentCaptchaType) {
-        case IMAGECAPTCHA:
-            self.currentCaptcha = [[ImageCaptcha alloc] initWithFrame:self.bounds];
-            //[self.captchaContainerView addSubview:self.currentCaptcha];
-            break;
-        default:
-            break;
-    }
+    self.captchaControl = [[CaptchaControl alloc] initWithFrame:self.captchaContainerView.bounds];
+    [self.captchaControl setCaptcha: IMAGECAPTCHA];
+    [self.captchaContainerView addSubview:self.captchaControl];
 }
 
 @end

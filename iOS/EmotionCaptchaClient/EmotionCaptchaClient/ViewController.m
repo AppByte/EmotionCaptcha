@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <EmotionCaptcha/CAPTCHAView.h>
 
 @interface ViewController ()
 

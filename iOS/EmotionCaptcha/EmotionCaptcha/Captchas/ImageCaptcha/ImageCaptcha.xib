@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,48 +9,41 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
-        </array>
-    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageCaptcha" customModule="EmotionCaptcha" customModuleProvider="target">
-            <connections>
-                <outlet property="captchaView" destination="iN0-l3-epB" id="ZZH-8Y-Tws"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageCaptcha" customModule="EmotionCaptcha" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YS-4D-D3Y">
-                    <rect key="frame" x="27" y="70" width="321" height="22.666666666666671"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hier steht die Frage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zv8-cA-RXL">
-                    <rect key="frame" x="27" y="101" width="321" height="72"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="72" id="pRn-Pt-zqy"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WGI-lp-EmI">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1X0-eY-3KU">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="OLj-yU-9LV"/>
+                        <outlet property="delegate" destination="-1" id="X9d-Fu-Kaz"/>
+                    </connections>
+                </collectionView>
             </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0YS-4D-D3Y" secondAttribute="trailing" constant="27" id="56p-Aj-nDT"/>
-                <constraint firstItem="Zv8-cA-RXL" firstAttribute="top" secondItem="0YS-4D-D3Y" secondAttribute="bottom" constant="8" id="8ps-Cy-OMX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Zv8-cA-RXL" secondAttribute="trailing" constant="27" id="RGp-IG-MF9"/>
-                <constraint firstItem="0YS-4D-D3Y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="26" id="Rmn-kR-nF6"/>
-                <constraint firstItem="0YS-4D-D3Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="27" id="SPH-MJ-VuA"/>
-                <constraint firstItem="Zv8-cA-RXL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="27" id="o4D-y0-oUz"/>
+                <constraint firstAttribute="trailing" secondItem="WGI-lp-EmI" secondAttribute="trailing" id="4aM-qI-g6L"/>
+                <constraint firstItem="WGI-lp-EmI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5qd-6Q-icb"/>
+                <constraint firstItem="WGI-lp-EmI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BZC-Ar-fP0"/>
+                <constraint firstItem="WGI-lp-EmI" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="OAe-9Z-YxF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="25.5" y="-5"/>
+            <connections>
+                <outlet property="collectionView" destination="WGI-lp-EmI" id="3qc-Ku-Bxf"/>
+                <outlet property="collectionViewFlowLayout" destination="1X0-eY-3KU" id="zQm-Ub-tnW"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="53.5"/>
         </view>
     </objects>
 </document>

@@ -1,5 +1,5 @@
 //
-//  ImageCaptcha.h
+//  CAPTCHAViewController.h
 //  EmotionCaptcha
 //
 //  Created by Daniel Strebinger on 13.02.18.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CaptchaProtocol.h"
+#import "CAPTCHAView.h"
 
-@interface ImageCaptcha : UIView  <CaptchaProtocol, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CAPTCHAViewController : UIViewController
 
 @end

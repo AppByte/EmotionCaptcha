@@ -2,11 +2,16 @@
 //  ImageCaptcha.m
 //  EmotionCaptcha
 //
-//  Created by Daniel Strebinger on 12.02.18.
+//  Created by Daniel Strebinger on 13.02.18.
 //  Copyright © 2018 Daniel Strebinger. All rights reserved.
 //
 
 #import "ImageCaptcha.h"
+
+@interface ImageCaptcha()
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UICollectionViewFlowLayout *collectionViewFlowLayout;
+@end
 
 @implementation ImageCaptcha
 
@@ -32,27 +37,28 @@
  * Configures the captcha view.
  */
 -(void)configureView {
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:[ImageCaptcha self]];    
-    [frameworkBundle loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
-    [self addSubview:self.captchaView];
-    self.collectionView.scrollEnabled = false;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"ImageCaptchaCell" bundle:frameworkBundle] forCellWithReuseIdentifier:@"Cell"];
-    [self.collectionViewFlowLayout  setItemSize:CGSizeMake(137, 137)];
-    [self.collectionViewFlowLayout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 10)];
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[ImageCaptcha self]];
+     [self setFrame:self.superview.bounds];
+    [self addSubview: self.]
+     self.collectionView.scrollEnabled = false;
+     [self.collectionView registerNib:[UINib nibWithNibName:@"ImageCaptchaCell" bundle:frameworkBundle] forCellWithReuseIdentifier:@"Cell"];
+     [self.collectionViewFlowLayout  setItemSize:CGSizeMake(130, 130)];
+     [self.collectionViewFlowLayout setSectionInset:UIEdgeInsetsMake(9, 9, 9, 9)];
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section
-{
-    return 1;
-}
+ {
+ return 1;
+ }
+ 
+ -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+ {
+ return 4;
+ }
+ 
+ - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+ UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+ return cell;
+ }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 4;
-}
-
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    return cell;
-}
 @end

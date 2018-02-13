@@ -10,13 +10,18 @@
 		3B463C9B2032D8AC0064984B /* beach-tracks_b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B463C9A2032D8AC0064984B /* beach-tracks_b.jpg */; };
 		3B463C9D2032DD310064984B /* CAPTCHAView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B463C9C2032DD310064984B /* CAPTCHAView.xib */; };
 		3B463C9F2032DDA90064984B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B463C9E2032DDA90064984B /* QuartzCore.framework */; };
+		3B94F76920331289002CDFFB /* CAPTCHAViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B94F76720331289002CDFFB /* CAPTCHAViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B94F76A20331289002CDFFB /* CAPTCHAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B94F76820331289002CDFFB /* CAPTCHAViewController.m */; };
+		3B94F76E2033190A002CDFFB /* ImageCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B94F76C2033190A002CDFFB /* ImageCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B94F76F2033190A002CDFFB /* ImageCaptcha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B94F76D2033190A002CDFFB /* ImageCaptcha.m */; };
+		3B94F77120331A20002CDFFB /* ImageCaptcha.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B94F77020331A20002CDFFB /* ImageCaptcha.xib */; };
 		3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */; };
 		3BBBA2B720320905001D1ED5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BBBA2B620320905001D1ED5 /* UIKit.framework */; };
-		3BBBA2E120321461001D1ED5 /* ImageCaptcha.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2DF20321461001D1ED5 /* ImageCaptcha.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3BBBA2E220321461001D1ED5 /* ImageCaptcha.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E020321461001D1ED5 /* ImageCaptcha.m */; };
-		3BBBA2E42032146C001D1ED5 /* ImageCaptcha.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E32032146C001D1ED5 /* ImageCaptcha.xib */; };
+		3BBBA2E120321461001D1ED5 /* CaptchaControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2DF20321461001D1ED5 /* CaptchaControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BBBA2E220321461001D1ED5 /* CaptchaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E020321461001D1ED5 /* CaptchaControl.m */; };
+		3BBBA2E42032146C001D1ED5 /* CaptchaControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E32032146C001D1ED5 /* CaptchaControl.xib */; };
 		3BBBA2E6203216DF001D1ED5 /* CaptchaTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2E5203216A8001D1ED5 /* CaptchaTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2E820321979001D1ED5 /* CaptchaProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBBA2E7203218AC001D1ED5 /* CaptchaProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BBBA2EA20322527001D1ED5 /* ImageCaptchaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */; };
@@ -26,15 +31,20 @@
 		3B463C9A2032D8AC0064984B /* beach-tracks_b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "beach-tracks_b.jpg"; sourceTree = "<group>"; };
 		3B463C9C2032DD310064984B /* CAPTCHAView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CAPTCHAView.xib; sourceTree = "<group>"; };
 		3B463C9E2032DDA90064984B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B94F76720331289002CDFFB /* CAPTCHAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPTCHAViewController.h; sourceTree = "<group>"; };
+		3B94F76820331289002CDFFB /* CAPTCHAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPTCHAViewController.m; sourceTree = "<group>"; };
+		3B94F76C2033190A002CDFFB /* ImageCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCaptcha.h; sourceTree = "<group>"; };
+		3B94F76D2033190A002CDFFB /* ImageCaptcha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCaptcha.m; sourceTree = "<group>"; };
+		3B94F77020331A20002CDFFB /* ImageCaptcha.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCaptcha.xib; sourceTree = "<group>"; };
 		3BBBA2A1203203C0001D1ED5 /* EmotionCaptcha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmotionCaptcha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBBA2A4203203C0001D1ED5 /* EmotionCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmotionCaptcha.h; sourceTree = "<group>"; };
 		3BBBA2A5203203C0001D1ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BBBA2AE203203F7001D1ED5 /* CAPTCHAView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CAPTCHAView.h; sourceTree = "<group>"; };
 		3BBBA2AF203203F7001D1ED5 /* CAPTCHAView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CAPTCHAView.m; sourceTree = "<group>"; };
 		3BBBA2B620320905001D1ED5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		3BBBA2DF20321461001D1ED5 /* ImageCaptcha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCaptcha.h; sourceTree = "<group>"; };
-		3BBBA2E020321461001D1ED5 /* ImageCaptcha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCaptcha.m; sourceTree = "<group>"; };
-		3BBBA2E32032146C001D1ED5 /* ImageCaptcha.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCaptcha.xib; sourceTree = "<group>"; };
+		3BBBA2DF20321461001D1ED5 /* CaptchaControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaControl.h; sourceTree = "<group>"; };
+		3BBBA2E020321461001D1ED5 /* CaptchaControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptchaControl.m; sourceTree = "<group>"; };
+		3BBBA2E32032146C001D1ED5 /* CaptchaControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CaptchaControl.xib; sourceTree = "<group>"; };
 		3BBBA2E5203216A8001D1ED5 /* CaptchaTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaTypes.h; sourceTree = "<group>"; };
 		3BBBA2E7203218AC001D1ED5 /* CaptchaProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaProtocol.h; sourceTree = "<group>"; };
 		3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCaptchaCell.xib; sourceTree = "<group>"; };
@@ -53,6 +63,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B94F7662033126A002CDFFB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B94F76720331289002CDFFB /* CAPTCHAViewController.h */,
+				3B94F76820331289002CDFFB /* CAPTCHAViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3B94F76B203318EE002CDFFB /* ImageCaptcha */ = {
+			isa = PBXGroup;
+			children = (
+				3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */,
+				3B94F76C2033190A002CDFFB /* ImageCaptcha.h */,
+				3B94F76D2033190A002CDFFB /* ImageCaptcha.m */,
+				3B94F77020331A20002CDFFB /* ImageCaptcha.xib */,
+			);
+			path = ImageCaptcha;
+			sourceTree = "<group>";
+		};
 		3BBBA297203203C0001D1ED5 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +103,8 @@
 		3BBBA2A3203203C0001D1ED5 /* EmotionCaptcha */ = {
 			isa = PBXGroup;
 			children = (
+				3BBBA2DE20321445001D1ED5 /* Controls */,
+				3B94F7662033126A002CDFFB /* Controller */,
 				3B463C9A2032D8AC0064984B /* beach-tracks_b.jpg */,
 				3BBBA2DD2032143A001D1ED5 /* Captchas */,
 				3BBBA2B2203205C0001D1ED5 /* CaptchaView */,
@@ -106,20 +138,19 @@
 		3BBBA2DD2032143A001D1ED5 /* Captchas */ = {
 			isa = PBXGroup;
 			children = (
-				3BBBA2DE20321445001D1ED5 /* ImageCaptcha */,
+				3B94F76B203318EE002CDFFB /* ImageCaptcha */,
 			);
 			path = Captchas;
 			sourceTree = "<group>";
 		};
-		3BBBA2DE20321445001D1ED5 /* ImageCaptcha */ = {
+		3BBBA2DE20321445001D1ED5 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				3BBBA2DF20321461001D1ED5 /* ImageCaptcha.h */,
-				3BBBA2E020321461001D1ED5 /* ImageCaptcha.m */,
-				3BBBA2E32032146C001D1ED5 /* ImageCaptcha.xib */,
-				3BBBA2E920322527001D1ED5 /* ImageCaptchaCell.xib */,
+				3BBBA2DF20321461001D1ED5 /* CaptchaControl.h */,
+				3BBBA2E020321461001D1ED5 /* CaptchaControl.m */,
+				3BBBA2E32032146C001D1ED5 /* CaptchaControl.xib */,
 			);
-			path = ImageCaptcha;
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +160,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B94F76920331289002CDFFB /* CAPTCHAViewController.h in Headers */,
 				3BBBA2E820321979001D1ED5 /* CaptchaProtocol.h in Headers */,
 				3BBBA2B0203203F7001D1ED5 /* CAPTCHAView.h in Headers */,
-				3BBBA2E120321461001D1ED5 /* ImageCaptcha.h in Headers */,
+				3BBBA2E120321461001D1ED5 /* CaptchaControl.h in Headers */,
+				3B94F76E2033190A002CDFFB /* ImageCaptcha.h in Headers */,
 				3BBBA2E6203216DF001D1ED5 /* CaptchaTypes.h in Headers */,
 				3BBBA2A6203203C0001D1ED5 /* EmotionCaptcha.h in Headers */,
 			);
@@ -197,8 +230,9 @@
 			files = (
 				3B463C9B2032D8AC0064984B /* beach-tracks_b.jpg in Resources */,
 				3BBBA2EA20322527001D1ED5 /* ImageCaptchaCell.xib in Resources */,
-				3BBBA2E42032146C001D1ED5 /* ImageCaptcha.xib in Resources */,
+				3BBBA2E42032146C001D1ED5 /* CaptchaControl.xib in Resources */,
 				3B463C9D2032DD310064984B /* CAPTCHAView.xib in Resources */,
+				3B94F77120331A20002CDFFB /* ImageCaptcha.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,8 +243,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BBBA2E220321461001D1ED5 /* ImageCaptcha.m in Sources */,
+				3B94F76F2033190A002CDFFB /* ImageCaptcha.m in Sources */,
+				3BBBA2E220321461001D1ED5 /* CaptchaControl.m in Sources */,
 				3BBBA2B1203203F7001D1ED5 /* CAPTCHAView.m in Sources */,
+				3B94F76A20331289002CDFFB /* CAPTCHAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
