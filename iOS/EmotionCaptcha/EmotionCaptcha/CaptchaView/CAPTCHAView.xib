@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CAPTCHAView" customModule="EmotionCaptcha" customModuleProvider="target">
+            <connections>
+                <outlet property="captchaContainerView" destination="6Q4-Mo-iAv" id="CTN-Qw-AYz"/>
+                <outlet property="captchaView" destination="iN0-l3-epB" id="8bP-a1-jUc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q4-Mo-iAv">
+                    <rect key="frame" x="43.5" y="154" width="233" height="456"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="288" id="Qu0-hu-TK5"/>
+                        <constraint firstAttribute="height" constant="456" id="Rv5-rZ-thl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="6Q4-Mo-iAv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="43.670000000000002" id="6q6-R4-2Vw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Q4-Mo-iAv" secondAttribute="trailing" constant="43.329999999999998" id="aBh-8f-36K"/>
+                <constraint firstItem="6Q4-Mo-iAv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="134" id="hQ1-FP-puF"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="34" y="54"/>
+        </view>
+    </objects>
+</document>

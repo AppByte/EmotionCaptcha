@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "CaptchaProtocol.h"
 #import "CaptchaTypes.h"
 #import "ImageCaptcha.h"
 
 @interface CAPTCHAView : UIView
+@property (strong, nonatomic) IBOutlet UIView *captchaContainerView;
 
 @end

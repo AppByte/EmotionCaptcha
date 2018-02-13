@@ -32,13 +32,9 @@
  * Configures the captcha view.
  */
 -(void)configureView {
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:[ImageCaptcha self]];
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"beach-tracks_b.jpg" inBundle:frameworkBundle compatibleWithTraitCollection:nil]];
-    [self addSubview:backgroundView];
-    
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[ImageCaptcha self]];    
     [frameworkBundle loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
     [self addSubview:self.captchaView];
-    
     self.collectionView.scrollEnabled = false;
     [self.collectionView registerNib:[UINib nibWithNibName:@"ImageCaptchaCell" bundle:frameworkBundle] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionViewFlowLayout  setItemSize:CGSizeMake(137, 137)];

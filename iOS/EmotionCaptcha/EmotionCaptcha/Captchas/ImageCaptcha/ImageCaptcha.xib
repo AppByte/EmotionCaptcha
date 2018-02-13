@@ -18,8 +18,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageCaptcha" customModule="EmotionCaptcha" customModuleProvider="target">
             <connections>
                 <outlet property="captchaView" destination="iN0-l3-epB" id="ZZH-8Y-Tws"/>
-                <outlet property="collectionView" destination="fYf-ik-NMK" id="McE-4M-vZ2"/>
-                <outlet property="collectionViewFlowLayout" destination="M35-7V-XIi" id="VIB-4k-Qo3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -42,33 +40,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fYf-ik-NMK">
-                    <rect key="frame" x="27" y="254" width="321" height="305"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="305" id="BLb-GS-5ou"/>
-                        <constraint firstAttribute="width" constant="321" id="okb-Xz-oqC"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M35-7V-XIi">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="4zO-gW-dqc"/>
-                        <outlet property="delegate" destination="-1" id="Wfk-Rj-fjU"/>
-                    </connections>
-                </collectionView>
             </subviews>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0YS-4D-D3Y" secondAttribute="trailing" constant="27" id="56p-Aj-nDT"/>
-                <constraint firstItem="fYf-ik-NMK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8cV-jB-3Lz"/>
                 <constraint firstItem="Zv8-cA-RXL" firstAttribute="top" secondItem="0YS-4D-D3Y" secondAttribute="bottom" constant="8" id="8ps-Cy-OMX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Zv8-cA-RXL" secondAttribute="trailing" constant="27" id="RGp-IG-MF9"/>
                 <constraint firstItem="0YS-4D-D3Y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="26" id="Rmn-kR-nF6"/>
                 <constraint firstItem="0YS-4D-D3Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="27" id="SPH-MJ-VuA"/>
-                <constraint firstItem="fYf-ik-NMK" firstAttribute="top" secondItem="Zv8-cA-RXL" secondAttribute="bottom" constant="81" id="V6X-gS-Ysx"/>
                 <constraint firstItem="Zv8-cA-RXL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="27" id="o4D-y0-oUz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
