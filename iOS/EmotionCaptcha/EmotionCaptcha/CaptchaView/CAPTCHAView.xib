@@ -22,18 +22,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q4-Mo-iAv">
-                    <rect key="frame" x="43.5" y="154" width="233" height="456"/>
+                    <rect key="frame" x="16" y="10" width="288" height="460"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="288" id="Qu0-hu-TK5"/>
-                        <constraint firstAttribute="height" constant="456" id="Rv5-rZ-thl"/>
+                        <constraint firstAttribute="width" constant="288" id="DJ2-4Q-845"/>
+                        <constraint firstAttribute="height" constant="460" id="SxS-JO-5lL"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="6Q4-Mo-iAv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="43.670000000000002" id="6q6-R4-2Vw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Q4-Mo-iAv" secondAttribute="trailing" constant="43.329999999999998" id="aBh-8f-36K"/>
-                <constraint firstItem="6Q4-Mo-iAv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="134" id="hQ1-FP-puF"/>
+                <constraint firstItem="6Q4-Mo-iAv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8oG-Hf-6DR"/>
+                <constraint firstItem="6Q4-Mo-iAv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wZU-Eg-U2c"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="34" y="54"/>

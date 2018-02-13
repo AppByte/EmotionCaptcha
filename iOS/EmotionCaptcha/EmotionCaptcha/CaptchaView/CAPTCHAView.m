@@ -49,11 +49,14 @@
     [self addSubview:backgroundView];
     [frameworkBundle loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
     [self addSubview:self.captchaView];
+    [self.captchaView setFrame:self.captchaView.superview.bounds];
     self.captchaView.clipsToBounds = true;
+    self.captchaContainerView.clipsToBounds = true;
+    self.captchaContainerView.autoresizingMask = true;
     self.captchaContainerView.layer.borderColor = [UIColor grayColor].CGColor;
     self.captchaContainerView.layer.borderWidth = 0.9f;
     self.captchaContainerView.layer.cornerRadius = 13;
-    
+
     if (self.currentCaptchaType == nil)
     {
         self.currentCaptchaType = IMAGECAPTCHA;
@@ -62,7 +65,7 @@
     switch (self.currentCaptchaType) {
         case IMAGECAPTCHA:
             self.currentCaptcha = [[ImageCaptcha alloc] initWithFrame:self.bounds];
-            [self.captchaContainerView addSubview:self.currentCaptcha];
+            //[self.captchaContainerView addSubview:self.currentCaptcha];
             break;
         default:
             break;
