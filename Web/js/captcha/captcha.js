@@ -21,7 +21,6 @@ $.fn.mycaptcha = function(configuration) {
         captchaContainer: null,
         captchaLayout: null
     };
-
     var userData = {
         selected: null
     };
@@ -40,9 +39,9 @@ $.fn.mycaptcha = function(configuration) {
         $.post("http://localhost:3000/requestCaptcha", {
             apiToken: sha256(configuration.apiKey)
         }).done(function(result) {
-            console.log(result);
             elements.captchaButton.appendTo(elements.targetElement);
             elements.captchaPopupContainer.appendTo(elements.targetElement);
+            createCaptchaUI();
             elements.captchaContainerContent = $(createCaptcha(result)).appendTo(elements.captchaPopupContainer);
             elements.captchaButton.click(function() {
                 displayCaptchaContainer();
@@ -57,7 +56,6 @@ $.fn.mycaptcha = function(configuration) {
         return "<div class='captcha-popup-container hidden'id='" + identifier + "'></div>"
     };
     var createCaptcha = function(result) {
-        createCaptchaUI();
         elements.captchaUI.titleLabel.empty().append(result.question);
         switch(result.captchaType)
         {
@@ -78,6 +76,8 @@ $.fn.mycaptcha = function(configuration) {
         elements.captchaUI.verifyButton = $("<button class='btn btn-captcha-verify-outline captcha-verify-button'>Verify</button>").appendTo(footerContainer);
         elements.captchaUI.reloadButton = $("<a class='captcha-reload-button'><i class='fas fa-sync'></i></a>").appendTo(footerContainer);
 
+        elements.captchaUI.verifyButton.click(verifyCaptcha);
+        elements.captchaUI.reloadButton.click(reloadCaptcha);
     };
 
     var createImageCaptcha = function(images)
@@ -88,14 +88,13 @@ $.fn.mycaptcha = function(configuration) {
         for (var i = 0; i < images.length; i++) {
             var container = $("<div class='col-xs-6'></div>").appendTo(imageCaptcha.captchaLayout);
             var imageContainer = $("<div class='captcha-image-container'></div>").appendTo(container);
-            var imageSelectionButton = $("<a data-id='"+ images[i].id +"' class='captcha-image-button'></a>").appendTo(imageContainer);
+            var imageSelectionButton = $("<a data-value='"+ images[i].id +"' class='captcha-image-button'></a>").appendTo(imageContainer);
             $("<img class='rounded captcha-image' src='"+ images[i].url +"' />").appendTo(imageSelectionButton);
             var checkIcon = $("<div class='captcha-image-check hidden'><i class='far fa-check-circle'></i></div>").appendTo(imageContainer);
             imageSelectionButton.click(function() {
 
                 if (userData.selected != null)
                 {
-                    console.log($(userData.selected.parent().children()[1]));
                     $(userData.selected.parent().children()[1]).removeClass("visible").addClass("hidden");
                     userData.selected.children().removeClass("captcha-image-check-background");
                 }
@@ -166,5 +165,38 @@ $.fn.mycaptcha = function(configuration) {
             elements.captchaPopupContainer.offset(captchaContainerPositions.bellow);
             return;
         }
+    }
+
+    var verifyCaptcha = function()
+    {
+        if (userData.selected == null)
+        {
+            alert("Attention - you must select something!");
+            return;
+        }
+
+        alert(userData.selected.attr("data-value"));
+
+        $.post("http://localhost:3000/verifyCaptcha", {
+            apiToken: sha256(configuration.apiKey),
+            result: userData.selected.attr("data-value")
+        }).done(function(result) {
+            if (configuration.verified() !== undefined){
+                configuration.verified();
+            };
+        });
+    }
+
+    var reloadCaptcha = function()
+    {
+        elements.captchaUI.titleLabel.empty();
+        elements.captchaContainer.empty();
+        userData.selected = null;
+
+        $.post("http://localhost:3000/requestCaptcha", {
+            apiToken: sha256(configuration.apiKey)
+        }).done(function(result) {
+            createCaptcha(result);
+        });
     }
 };
