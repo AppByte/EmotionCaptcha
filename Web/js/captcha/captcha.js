@@ -13,8 +13,8 @@ $.fn.mycaptcha = function(configuration) {
     }).done(function(result) {
         var captchaID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
         var captchaContainerID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
-        captchaButton = $(targetElement.append(createCaptchaButton(captchaID)));
-        captchaContainer = $(targetElement.append(createCaptchaContainer(captchaContainerID)));
+        captchaButton = $(createCaptchaButton(captchaID)).appendTo(targetElement);
+        captchaContainer = $(createCaptchaContainer(captchaContainerID)).appendTo(targetElement);
         captchaButton.click(function() {
             displayCaptchaContainer();
         })
@@ -58,6 +58,12 @@ $.fn.mycaptcha = function(configuration) {
                 left: captchaButton.offset().left + captchaButton.outerWidth() + containerOffset
             }
         };
+
+        if (configuration.orientation !== undefined)
+        {
+            captchaContainer.offset(captchaContainerPositions[configuration.orientation]);
+            return;
+        }
 
         if (!(captchaContainerPositions.above.top < 0))
         {
