@@ -14,7 +14,7 @@ class Server {
     {
         this.httpServer = new HttpServer();
         this.httpServer.events.on('onRequestedToken', this.onRequestedTokenCallBack.bind(this));
-
+        this.httpServer.events.on('onRequestedCaptcha', this.onRequestedCaptcha.bind(this));
     }
 
     start()
@@ -27,6 +27,12 @@ class Server {
         console.log("got");
         res.header("Content-Type", "text/json");
         res.send(JSON.stringify({token: Crypto.generateKey()}));
+    }
+
+    onRequestedCaptcha(req, res)
+    {
+        res.header("Content-Type", "text/json");
+        res.send(JSON.stringify({token: Crypto.generateKey(), captchaType: "image"}));
     }
 }
 

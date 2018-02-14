@@ -1,11 +1,16 @@
 $.fn.mycaptcha = function(configuration) {
-    var targetElement = $(this);
-    var captchaButton = null;
-    var captchaContainer = null;
-    var containerOffset = 5;
-    var pageDimensions = {
-        height: $(document).height(),
-        width: $(document).width()
+    var elements = {
+        targetElement: $(this),
+        captchaButton: null,
+        captchaContainer: null
+    };
+
+    var dimensions = {
+        page: {
+            height: $(document).height(),
+            width: $(document).width()
+        },
+        containerOffset: 5
     };
 
     $.post("http://localhost:3000/requestToken", {
@@ -13,78 +18,88 @@ $.fn.mycaptcha = function(configuration) {
     }).done(function(result) {
         var captchaID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
         var captchaContainerID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
-        captchaButton = $(createCaptchaButton(captchaID)).appendTo(targetElement);
-        captchaContainer = $(createCaptchaContainer(captchaContainerID)).appendTo(targetElement);
-        captchaButton.click(function() {
+        elements.captchaButton = $(createCaptchaButton(captchaID)).appendTo(elements.targetElement);
+        elements.captchaContainer = $(createCaptchaContainer(captchaContainerID)).appendTo(elements.targetElement);
+        elements.captchaButton.click(function() {
             displayCaptchaContainer();
         })
+    });
+
+    $.post("http://localhost:3000/requestCaptcha", {
+        apiToken: sha256(configuration.apiKey)
+    }).done(function(result) {
+        console.log(result);
+        elements.captchaContainerContent = $(createCaptcha(result.captchaType)).appendTo(elements.captchaContainer);
     });
 
     var createCaptchaButton = function(identifier) {
         return "<button class=\'btn btn-outline-success\' id='"+identifier+"'>Verify</button>";
     };
-
     var createCaptchaContainer = function(identifier) {
         return "<div class='captcha-container hidden'id='" + identifier + "'></div>"
     };
 
+    var createCaptcha = function() {
+        return "<div class='row'><div class='col-md-12'><label>Question:</label>Test</div></div>"
+    };
+
     var displayCaptchaContainer = function () {
-        if(captchaContainer.hasClass("visible"))
+        if(elements.captchaContainer.hasClass("visible"))
         {
-            captchaContainer.removeClass("visible");
-            captchaContainer.addClass("hidden");
+            elements.captchaContainer.removeClass("visible");
+            elements.captchaContainer.addClass("hidden");
             return;
         }
 
-        captchaContainer.removeClass("hidden");
-        captchaContainer.addClass("visible");
+        elements.captchaContainer.removeClass("hidden");
+        elements.captchaContainer.addClass("visible");
 
-        var captchaButtonPosition = captchaButton.offset();
+        var captchaButtonPosition = elements.captchaButton.offset();
         var captchaContainerPositions = {
             above: {
-                top: captchaButtonPosition.top - (captchaContainer.outerHeight() + containerOffset),
-                left: captchaButton.offset().left
+                top: captchaButtonPosition.top - (elements.captchaContainer.outerHeight() + dimensions.containerOffset),
+                left: elements.captchaButton.offset().left
             },
             bellow: {
-                top: captchaButtonPosition.top + (captchaButton.outerHeight() + containerOffset),
-                left: captchaButton.offset().left
+                top: captchaButtonPosition.top + (elements.captchaButton.outerHeight() + dimensions.containerOffset),
+                left: elements.captchaButton.offset().left
             },
             left: {
-                top: (captchaButtonPosition.top  + captchaButton.outerHeight()) - captchaContainer.outerHeight(),
-                left: captchaButton.offset().left - (captchaContainer.outerWidth() + containerOffset)
+                top: (captchaButtonPosition.top  + elements.captchaButton.outerHeight()) - elements.captchaContainer.outerHeight(),
+                left: elements.captchaButton.offset().left - (elements.captchaContainer.outerWidth() + dimensions.containerOffset)
             },
             right: {
-                top: (captchaButtonPosition.top  + captchaButton.outerHeight()) - captchaContainer.outerHeight(),
-                left: captchaButton.offset().left + captchaButton.outerWidth() + containerOffset
+                top: (captchaButtonPosition.top  + elements.captchaButton.outerHeight()) - elements.captchaContainer.outerHeight(),
+                left: elements.captchaButton.offset().left + elements.captchaButton.outerWidth() + dimensions.containerOffset
             }
         };
 
         if (configuration.orientation !== undefined)
         {
-            captchaContainer.offset(captchaContainerPositions[configuration.orientation]);
+            elements.captchaContainer.offset(captchaContainerPositions[configuration.orientation]);
             return;
         }
 
         if (!(captchaContainerPositions.above.top < 0))
         {
-            captchaContainer.offset(captchaContainerPositions.above);
+            elements.captchaContainer.offset(captchaContainerPositions.above);
             return;
         }
 
         if (!(captchaContainerPositions.left.top < 0 || captchaContainerPositions.left.left < 0))
         {
-            captchaContainer.offset(captchaContainerPositions.left);
+            elements.captchaContainer.offset(captchaContainerPositions.left);
             return;
         }
 
         if (!(captchaContainerPositions.right.top < 0 || captchaContainerPositions.right.left > pageDimensions.width))
         {
-            captchaContainer.offset(captchaContainerPositions.right);
+            elements.captchaContainer.offset(captchaContainerPositions.right);
             return;
         }
 
         if (!((captchaContainerPositions.bottom + captchaContainer.outerHeight()) > pageDimensions.height)) {
-            captchaContainer.offset(captchaContainerPositions.bellow);
+            elements.captchaContainer.offset(captchaContainerPositions.bellow);
             return;
         }
     }

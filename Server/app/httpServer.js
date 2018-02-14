@@ -26,6 +26,9 @@ class HttpServer {
         this.httpServer.post('/requestToken',function (req, res){
             this.events.emit('onRequestedToken', req, res);
         }.bind(this));
+        this.httpServer.post('/requestCaptcha',function (req, res){
+            this.events.emit('onRequestedCaptcha', req, res);
+        }.bind(this));
 
         this.httpServer.disable('x-powered-by');
         this.httpServer.use(helmet());
