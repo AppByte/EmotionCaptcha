@@ -32,7 +32,8 @@ class Server {
     onRequestedCaptcha(req, res)
     {
         res.header("Content-Type", "text/json");
-        res.send(JSON.stringify({token: Crypto.generateKey(), captchaType: "image"}));
+        console.log("served captcha");
+        res.send(JSON.stringify({token: Crypto.generateKey(), captchaType: "image", question: "How many?", images:[{id: 1, url: "http://via.placeholder.com/170x100"},{id: 2, url: "http://via.placeholder.com/170x100"},{id: 3, url: "http://via.placeholder.com/170x100"},{id: 4, url: "http://via.placeholder.com/170x100"}]}));
     }
 }
 
