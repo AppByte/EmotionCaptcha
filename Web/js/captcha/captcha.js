@@ -1,5 +1,6 @@
 $.fn.mycaptcha = function(configuration) {
     var elements = {
+        loadingBar: null,
         targetElement: $(this),
         captchaButton: null,
         captchaPopupContainer: null,
@@ -41,6 +42,7 @@ $.fn.mycaptcha = function(configuration) {
         }).done(function(result) {
             elements.captchaButton.appendTo(elements.targetElement);
             elements.captchaPopupContainer.appendTo(elements.targetElement);
+            elements.loadingBar = $("<div class=\"loader\"></div>").appendTo(elements.captchaPopupContainer);
             createCaptchaUI();
             elements.captchaContainerContent = $(createCaptcha(result)).appendTo(elements.captchaPopupContainer);
             elements.captchaButton.click(function() {
@@ -85,6 +87,7 @@ $.fn.mycaptcha = function(configuration) {
         imageCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
         imageCaptcha.captchaLayout = $("<div class='row align-content-center'></div>").appendTo(imageCaptcha.captchaContainer);
         imageCaptcha.captchaLayout.empty();
+        console.log(images);
         for (var i = 0; i < images.length; i++) {
             var container = $("<div class='col-xs-6'></div>").appendTo(imageCaptcha.captchaLayout);
             var imageContainer = $("<div class='captcha-image-container'></div>").appendTo(container);
@@ -117,6 +120,10 @@ $.fn.mycaptcha = function(configuration) {
         elements.captchaPopupContainer.removeClass("hidden");
         elements.captchaPopupContainer.addClass("visible");
 
+        resizeCaptcha();
+    };
+
+    var resizeCaptcha = function() {
         var captchaButtonPosition = elements.captchaButton.offset();
         var captchaContainerPositions = {
             above: {
@@ -165,7 +172,7 @@ $.fn.mycaptcha = function(configuration) {
             elements.captchaPopupContainer.offset(captchaContainerPositions.bellow);
             return;
         }
-    }
+    };
 
     var verifyCaptcha = function()
     {
@@ -193,10 +200,21 @@ $.fn.mycaptcha = function(configuration) {
         elements.captchaContainer.empty();
         userData.selected = null;
 
+        elements.captchaContainer.append("<div class=\"spinner\">\n" +
+            "  <div class=\"rect1\"></div>\n" +
+            "  <div class=\"rect2\"></div>\n" +
+            "  <div class=\"rect3\"></div>\n" +
+            "  <div class=\"rect4\"></div>\n" +
+            "  <div class=\"rect5\"></div>\n" +
+            "</div>");
+
+        resizeCaptcha();
         $.post("http://localhost:3000/requestCaptcha", {
             apiToken: sha256(configuration.apiKey)
         }).done(function(result) {
+            elements.captchaContainer.empty();
             createCaptcha(result);
+            resizeCaptcha();
         });
     }
 };
