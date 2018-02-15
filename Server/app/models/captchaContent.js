@@ -7,7 +7,7 @@ module.exports = module.exports = function(sequelize, DataTypes){
             autoIncrement: true,
             allowNull: false
         },
-        imagePath: {
+        content: {
             field: 'imageCaptchas_imagePath',
             type: DataTypes.STRING,
             allowNull: false

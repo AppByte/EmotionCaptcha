@@ -10,6 +10,7 @@ const dbConnection = new Sequelize('captcha', 'Daniel', 'stuhleck', {
 const Captchas = dbConnection.import(path.join(__dirname, "./models/captchas"));
 const CaptchaTypes = dbConnection.import(path.join(__dirname, "./models/captchaTypes"));
 const CaptchaContent = dbConnection.import(path.join(__dirname, "./models/captchaContent"));
+const Crypto = require(path.join(__dirname, "./crypto"));
 
 /**
  * Interacts with the database
@@ -48,13 +49,13 @@ class CaptchaManager {
         };
 
         CaptchaTypes.count().then(captchaTypeCount => {
-            let randomCaptchaType =  Math.floor(Math.random() * (captchaTypeCount - 1 + 1) + 1);
+            let randomCaptchaType =  Crypto.generateRandom(1, captchaTypeCount);
 
             // finds the
             CaptchaTypes.findOne({where: {id: randomCaptchaType}}).then(function(captchaTypeInformation) {
                 captchaInformation.captchaType = captchaTypeInformation.description;
                 Captchas.count().then(function (captchaCount) {
-                    let randomCaptchaID =  Math.floor(Math.random() * (captchaTypeCount - 1 + 1) + 1);
+                    let randomCaptchaID =  Crypto.generateRandom(1, captchaCount);
                     Captchas.findOne({ where: {fk_captchas_type: randomCaptchaID}}).then(function (randomCaptcha) {
                         captchaInformation.context = randomCaptcha.context;
 
@@ -67,7 +68,7 @@ class CaptchaManager {
                             let content = [];
                             for (let i = 0; i < results.length; i++) {
                                 let result = {
-                                    data: results[i].imagePath,
+                                    data: results[i].content,
                                     value: results[i].isCorrect
                                 };
                                 content.push(result);
@@ -104,36 +105,23 @@ class CaptchaManager {
                 captchaOne.fk_captchas_type = captchaTypeImage.id;
                 captchaOne.context = "How many from the server?";
                 captchaOne.save().then(function() {
-                    let imageCaptchaEntry = CaptchaContent.build();
-                    imageCaptchaEntry.fk_imageCaptchas_captchaID = captchaOne.id;
-                    imageCaptchaEntry.fk_captchaTypes_id = captchaTypeImage.id;
-                    imageCaptchaEntry.imagePath = "http://via.placeholder.com/170x100";
-                    imageCaptchaEntry.isCorrect = false;
-                    imageCaptchaEntry.save();
-
-                    imageCaptchaEntry = CaptchaContent.build();
-                    imageCaptchaEntry.fk_captchaTypes_id = captchaTypeImage.id;
-                    imageCaptchaEntry.fk_imageCaptchas_captchaID = captchaOne.id;
-                    imageCaptchaEntry.imagePath = "http://via.placeholder.com/170x100";
-                    imageCaptchaEntry.isCorrect = false;
-                    imageCaptchaEntry.save();
-
-                    imageCaptchaEntry = CaptchaContent.build();
-                    imageCaptchaEntry.fk_captchaTypes_id = captchaTypeImage.id;
-                    imageCaptchaEntry.fk_imageCaptchas_captchaID = captchaOne.id;
-                    imageCaptchaEntry.imagePath = "http://via.placeholder.com/170x100";
-                    imageCaptchaEntry.isCorrect = false;
-                    imageCaptchaEntry.save();
-
-                    imageCaptchaEntry = CaptchaContent.build();
-                    imageCaptchaEntry.fk_captchaTypes_id = captchaTypeImage.id;
-                    imageCaptchaEntry.fk_imageCaptchas_captchaID = captchaOne.id;
-                    imageCaptchaEntry.imagePath = "http://via.placeholder.com/170x100";
-                    imageCaptchaEntry.isCorrect = true;
-                    imageCaptchaEntry.save();
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
                 });
             });
         });
+    }
+
+    static createCaptchaContentEntry(data, isCorrect, captchaType, captchaID)
+    {
+        let captchaContentEntry = CaptchaContent.build();
+        captchaContentEntry.fk_captchaTypes_id = captchaType;
+        captchaContentEntry.fk_imageCaptchas_captchaID = captchaID;
+        captchaContentEntry.content = data;
+        captchaContentEntry.isCorrect = isCorrect;
+        captchaContentEntry.save();
     }
 }
 
