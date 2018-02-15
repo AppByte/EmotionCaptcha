@@ -58,12 +58,13 @@ $.fn.mycaptcha = function(configuration) {
         return "<div class='captcha-popup-container hidden'id='" + identifier + "'></div>"
     };
     var createCaptcha = function(result) {
-        elements.captchaUI.titleLabel.empty().append(result.question);
+        console.log(result);
+        elements.captchaUI.titleLabel.empty().append(result.context);
         switch(result.captchaType)
         {
-            case "image":
+            case "Image":
                 elements.captchaPopupContainer.addClass("captcha-container-image");
-                createImageCaptcha(result.images);
+                createImageCaptcha(result.content);
                 break;
         }
     };
@@ -91,8 +92,8 @@ $.fn.mycaptcha = function(configuration) {
         for (var i = 0; i < images.length; i++) {
             var container = $("<div class='col-xs-6'></div>").appendTo(imageCaptcha.captchaLayout);
             var imageContainer = $("<div class='captcha-image-container'></div>").appendTo(container);
-            var imageSelectionButton = $("<a data-value='"+ images[i].id +"' class='captcha-image-button'></a>").appendTo(imageContainer);
-            $("<img class='rounded captcha-image' src='"+ images[i].url +"' />").appendTo(imageSelectionButton);
+            var imageSelectionButton = $("<a data-value='"+ images[i].value +"' class='captcha-image-button'></a>").appendTo(imageContainer);
+            $("<img class='rounded captcha-image' src='"+ images[i].data +"' />").appendTo(imageSelectionButton);
             var checkIcon = $("<div class='captcha-image-check hidden'><i class='far fa-check-circle'></i></div>").appendTo(imageContainer);
             imageSelectionButton.click(function() {
 

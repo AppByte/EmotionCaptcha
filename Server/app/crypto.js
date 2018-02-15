@@ -11,6 +11,14 @@ class Crypto
         sha.update(Math.random().toString());
         return sha.digest('hex');
     }
+
+    /**
+     * Generats a random number.
+     * */
+    generateRandom(min, max)
+    {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 }
 
 module.exports = Crypto;
