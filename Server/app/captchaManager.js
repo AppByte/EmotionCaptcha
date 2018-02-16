@@ -11,6 +11,8 @@ const Captchas = dbConnection.import(path.join(__dirname, "./models/captchas"));
 const CaptchaTypes = dbConnection.import(path.join(__dirname, "./models/captchaTypes"));
 const CaptchaContent = dbConnection.import(path.join(__dirname, "./models/captchaContent"));
 const Crypto = require(path.join(__dirname, "./crypto"));
+const minHashRounds = 1000;
+const maxHashRounds = 10000;
 
 /**
  * Interacts with the database
@@ -28,7 +30,7 @@ class CaptchaManager {
     /**
      * Establishes a connection to the database.
      * */
-    establischConnection()
+    establishConnection()
     {
        this.dbInstance
             .authenticate()
@@ -38,11 +40,11 @@ class CaptchaManager {
             .catch(err => {
                 console.error('Unable to connect to the database:', err);
             });
-    }
+    };
 
     sendCaptcha(res) {
 
-        var captchaInformation = {
+        let captchaInformation = {
             captchaType: null,
             content: null,
             context: null,
@@ -67,20 +69,69 @@ class CaptchaManager {
                         }).then(function (results) {
                             let content = [];
                             for (let i = 0; i < results.length; i++) {
+
                                 let result = {
                                     data: results[i].content,
                                     value: results[i].isCorrect
                                 };
+
+                                let iterrations = Crypto.generateRandom(minHashRounds, maxHashRounds);
+                                for (let i = 0; i < iterrations; i++)
+                                {
+                                    result.value = Crypto.generateHashValue(result.value);
+                                }
+
                                 content.push(result);
                             }
 
                             captchaInformation.content = content;
                             res.send(JSON.stringify(captchaInformation));
-                            console.log(captchaInformation);
                         });
                     });
                 });
             });
+        });
+    }
+
+    verifyCaptcha(selection, captchaID, res)
+    {
+        CaptchaContent.findAll({
+            where: {
+                fk_imageCaptchas_captchaID: 1,
+                fk_captchaTypes_id: 1,
+                isCorrect: true
+            }
+        }).then(function(results) {
+
+            let isCorrectImage = false;
+
+            for (let i = 0; i < results.length; i++)
+            {
+                let hashValue = Crypto.generateHashValue(results[i].isCorrect);
+                for (let i = 0; i < maxHashRounds; i++)
+                {
+                    hashValue = Crypto.generateHashValue(hashValue);
+
+                    if (hashValue === selection)
+                    {
+                        isCorrectImage = true;
+                        break;
+                    }
+                }
+
+                if (isCorrectImage)
+                {
+                    break;
+                }
+            }
+
+            if (isCorrectImage)
+            {
+                res.send(JSON.stringify(true));
+                return;
+            }
+
+            res.send(JSON.stringify(false));
         });
     }
 
@@ -105,15 +156,18 @@ class CaptchaManager {
                 captchaOne.fk_captchas_type = captchaTypeImage.id;
                 captchaOne.context = "How many from the server?";
                 captchaOne.save().then(function() {
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", false, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", false, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", false, captchaTypeImage.id, captchaOne.id);
                     CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
                 });
             });
         });
     }
 
+    /**
+     * Creates an captcha content entry.
+     * */
     static createCaptchaContentEntry(data, isCorrect, captchaType, captchaID)
     {
         let captchaContentEntry = CaptchaContent.build();

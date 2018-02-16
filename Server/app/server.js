@@ -17,6 +17,7 @@ class Server {
         this.httpServer = new HttpServer();
         this.httpServer.events.on('onRequestedToken', this.onRequestedTokenCallBack.bind(this));
         this.httpServer.events.on('onRequestedCaptcha', this.onRequestedCaptcha.bind(this));
+        this.httpServer.events.on('onVerifyCaptcha', this.onVerifyCaptcha.bind(this));
         this.captchaManager = new CaptchaManager();
     }
 
@@ -28,7 +29,7 @@ class Server {
             this.captchaManager.seedData();
         }
 
-        this.captchaManager.establischConnection();
+        this.captchaManager.establishConnection();
     }
 
     onRequestedTokenCallBack(req, res)
@@ -41,6 +42,12 @@ class Server {
     {
         res.header("Content-Type", "text/json");
         this.captchaManager.sendCaptcha(res);
+    }
+
+    onVerifyCaptcha(req, res)
+    {
+        res.header("Content-Type", "text/json");
+        this.captchaManager.verifyCaptcha(req.body.result, null, res)
     }
 }
 

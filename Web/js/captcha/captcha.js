@@ -183,17 +183,24 @@ $.fn.mycaptcha = function(configuration) {
             return;
         }
 
-        alert(userData.selected.attr("data-value"));
-
         $.post("http://localhost:3000/verifyCaptcha", {
             apiToken: sha256(configuration.apiKey),
             result: userData.selected.attr("data-value")
         }).done(function(result) {
+            console.log(result);
+            if (!result)
+            {
+                reloadCaptcha();
+                return;
+            }
+
             if (configuration.verified() !== undefined){
                 configuration.verified();
-            };
+            }
+
+            displayCaptchaContainer();
         });
-    }
+    };
 
     var reloadCaptcha = function()
     {
