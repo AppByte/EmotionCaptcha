@@ -47,7 +47,7 @@ class Server {
     onVerifyCaptcha(req, res)
     {
         res.header("Content-Type", "text/json");
-        this.captchaManager.verifyCaptcha(req.body.result, null, res)
+        this.captchaManager.verifyCaptcha(req.body.result, req.body.captchaID, req.body.captchaType, res);
     }
 }
 

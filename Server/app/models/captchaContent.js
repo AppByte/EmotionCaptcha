@@ -1,5 +1,5 @@
 module.exports = module.exports = function(sequelize, DataTypes){
-    return sequelize.define('ImageCaptchas', {
+    return sequelize.define('CaptchaContent', {
         id: {
             field: 'imageCaptchas_id',
             type: DataTypes.INTEGER,

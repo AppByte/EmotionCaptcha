@@ -13,6 +13,8 @@ const CaptchaContent = dbConnection.import(path.join(__dirname, "./models/captch
 const Crypto = require(path.join(__dirname, "./crypto"));
 const minHashRounds = 1000;
 const maxHashRounds = 10000;
+
+
 /**
  * Interacts with the database
  * */
@@ -44,6 +46,7 @@ class CaptchaManager {
     sendCaptcha(res) {
 
         let captchaInformation = {
+            captchaID: null,
             captchaType: null,
             content: null,
             context: null,
@@ -54,9 +57,11 @@ class CaptchaManager {
 
             // finds the
             CaptchaTypes.findOne({where: {id: randomCaptchaType}}).then(function(captchaTypeInformation) {
+
                 captchaInformation.captchaType = captchaTypeInformation.description;
                 Captchas.count().then(function (captchaCount) {
                     let randomCaptchaID =  Crypto.generateRandom(1, captchaCount);
+                    captchaInformation.captchaID = Crypto.generateHashValue(randomCaptchaID);
                     Captchas.findOne({ where: {fk_captchas_type: randomCaptchaID}}).then(function (randomCaptcha) {
                         captchaInformation.context = randomCaptcha.context;
 
@@ -92,47 +97,82 @@ class CaptchaManager {
         });
     }
 
-    verifyCaptcha(selection, captchaID, res)
+    verifyCaptcha(selection, captchaID, captchaType, res)
     {
-        CaptchaContent.findAll({
-            where: {
-                fk_imageCaptchas_captchaID: 1,
-                fk_captchaTypes_id: 1,
-                isCorrect: true
-            }
-        }).then(function(results) {
+        CaptchaTypes.findAll({where :{captchaType_description: captchaType}}).then(function(results) {
+            let captchaTypeID = null;
 
-            let isCorrectImage = false;
-
-            for (let i = 0; i < results.length; i++)
+            for (var i = 0; i < results.length; i++)
             {
-                let hashValue = Crypto.generateHashValue(results[i].isCorrect);
-                for (let i = 0; i < maxHashRounds; i++)
+                if (results[i].description === captchaType)
                 {
-                    hashValue = Crypto.generateHashValue(hashValue);
+                    captchaTypeID = results[i].id;
+                }
+            }
 
-                    if (hashValue === selection)
+            if (captchaTypeID === null)
+            {
+                return;
+            }
+
+            Captchas.findAll().then(function(captchas){
+                let captchaIdentifier = 0;
+                for (let i = 0; i < captchas.length; i++)
+                {
+                    if (Crypto.generateHashValue(captchas[i].id) === captchaID)
                     {
-                        isCorrectImage = true;
+                        captchaIdentifier = captchas[i].id;
                         break;
                     }
                 }
 
-                if (isCorrectImage)
+                if (captchaIdentifier === 0)
                 {
-                    break;
+                    return;
                 }
-            }
 
-            if (isCorrectImage)
-            {
-                console.log("correct");
-                res.send(JSON.stringify(true));
-                return;
-            }
+                CaptchaContent.findAll({
+                    where: {
+                        fk_imageCaptchas_captchaID: captchaIdentifier,
+                        fk_captchaTypes_id: captchaTypeID,
+                        isCorrect: true
+                    }
+                }).then(function(results) {
 
-            console.log("not correct");
-            res.send(JSON.stringify(false));
+                    let isCorrectImage = false;
+
+                    for (let i = 0; i < results.length; i++)
+                    {
+                        let hashValue = Crypto.generateHashValue(results[i].isCorrect);
+                        for (let i = 0; i < maxHashRounds; i++)
+                        {
+                            hashValue = Crypto.generateHashValue(hashValue);
+
+                            if (hashValue === selection)
+                            {
+                                isCorrectImage = true;
+                                break;
+                            }
+                        }
+
+                        if (isCorrectImage)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (isCorrectImage)
+                    {
+                        console.log("correct");
+                        res.send(JSON.stringify(true));
+                        return;
+                    }
+
+                    console.log("not correct");
+                    res.send(JSON.stringify(false));
+                });
+            });
+
         });
     }
 
@@ -161,6 +201,22 @@ class CaptchaManager {
                     CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
                     CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
                     CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeImage.id, captchaOne.id);
+                });
+            });
+        });
+
+        let captchaTypeAudio = CaptchaTypes.build();
+        captchaTypeAudio.description = "Audio";
+        captchaTypeAudio.save().then(function() {
+            captchaTypeAudio.save().then(function() {
+                let captchaTwo = Captchas.build();
+                captchaTwo.fk_captchas_type = captchaTypeAudio.id;
+                captchaTwo.context = "How many from the server audio?";
+                captchaTwo.save().then(function() {
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", true, captchaTypeAudio.id, captchaTwo.id);
                 });
             });
         });

@@ -9,7 +9,9 @@ $.fn.mycaptcha = function(configuration) {
             titleLabel: null,
             verifyButton: null,
             reloadButton: null
-        }
+        },
+        captchaType: null,
+        captchaID: null,
     };
     var dimensions = {
         page: {
@@ -22,6 +24,11 @@ $.fn.mycaptcha = function(configuration) {
         captchaContainer: null,
         captchaLayout: null
     };
+    var audioCaptcha = {
+        captchaContainer: null,
+        captchaLayout: null
+    };
+
     var userData = {
         selected: null
     };
@@ -60,11 +67,20 @@ $.fn.mycaptcha = function(configuration) {
     var createCaptcha = function(result) {
         console.log(result);
         elements.captchaUI.titleLabel.empty().append(result.context);
-        switch(result.captchaType)
+        elements.captchaType = result.captchaType;
+        elements.captchaID =  result.captchaID;
+        switch(elements.captchaType)
         {
             case "Image":
                 elements.captchaPopupContainer.addClass("captcha-container-image");
                 createImageCaptcha(result.content);
+                break;
+            case "Audio":
+                elements.captchaPopupContainer.addClass("captcha-container-audio");
+                createAudioCaptcha(result.content);
+                break;
+            default:
+                displayCaptchaContainer();
                 break;
         }
     };
@@ -108,6 +124,31 @@ $.fn.mycaptcha = function(configuration) {
                 $(this).children().addClass("captcha-image-check-background");
             });
         }
+    };
+
+    var createAudioCaptcha = function(audio)
+    {
+        audioCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
+        audioCaptcha.captchaLayout = $("<div class='row align-content-center'></div>").appendTo(audioCaptcha.captchaContainer);
+        var row =  $("<div class='col-md-12'></div>").appendTo(audioCaptcha.captchaLayout);
+        var list = $("<ul class=\"list-group\"></ul>").appendTo(row);
+
+        console.log(audio);
+        for (var i = 0; i < audio.length; i++) {
+            var listItem = $(" <li class=\"list-group-item\"></li>\n").appendTo(list);
+            $("<audio controls class='audioControl'><source src=\""+ audio[i].data+"\" type=\"audio/ogg\">Your browser does not support the audio element.</audio>     <div class=\"form-check\">\n" +
+                "    <label class=\"form-check-label\">\n" +
+                "        <input type=\"radio\" class=\"form-check-input captcha-radio\" name=\"captchaRadio\" data-value=\""+ audio[i].value+"\">\n" +
+                "        This sounds like the correct answer" +
+                "      </label>\n" +
+                "    </div>").appendTo(listItem);
+        }
+
+        $(".captcha-radio").change(function()
+        {
+            userData.selected = $(this);
+            console.log(userData.selected);
+        })
     };
 
     var displayCaptchaContainer = function () {
@@ -185,7 +226,9 @@ $.fn.mycaptcha = function(configuration) {
 
         $.post("http://localhost:3000/verifyCaptcha", {
             apiToken: sha256(configuration.apiKey),
-            result: userData.selected.attr("data-value")
+            result: userData.selected.attr("data-value"),
+            captchaID: elements.captchaID,
+            captchaType: elements.captchaType
         }).done(function(result) {
 
             if (!result)
@@ -200,6 +243,8 @@ $.fn.mycaptcha = function(configuration) {
 
             displayCaptchaContainer();
         });
+
+        console.log("sent");
     };
 
     var reloadCaptcha = function()
