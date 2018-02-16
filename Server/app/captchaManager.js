@@ -53,7 +53,7 @@ class CaptchaManager {
         };
 
         CaptchaTypes.findAll().then(captchaTypes => {
-            let randomCaptchaTypeIndex = Crypto.generateRandom(0, captchaTypes.length - 1);
+            let randomCaptchaTypeIndex = Crypto.generateRandom(2, captchaTypes.length - 1);
             let randomCaptchaType =  captchaTypes[randomCaptchaTypeIndex].id;
             captchaInformation.captchaType = captchaTypes[randomCaptchaTypeIndex].description;
             Captchas.findAll({where: {fk_captchas_type: randomCaptchaType}}).then(function (randomCaptchas) {
@@ -211,6 +211,19 @@ class CaptchaManager {
                     CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
                     CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
                     CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", true, captchaTypeAudio.id, captchaTwo.id);
+                });
+            });
+        });
+
+        let captchaTypeText = CaptchaTypes.build();
+        captchaTypeText.description = "Text";
+        captchaTypeText.save().then(function() {
+            captchaTypeAudio.save().then(function() {
+                let captchaThree = Captchas.build();
+                captchaThree.fk_captchas_type = captchaTypeText.id;
+                captchaThree.context = "How many from the server audio?";
+                captchaThree.save().then(function() {
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeText.id, captchaThree.id);
                 });
             });
         });
