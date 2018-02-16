@@ -84,6 +84,7 @@ class CaptchaManager {
                     }
 
                     captchaInformation.content = content;
+                    CaptchaManager.randomizeCaptchaContent(captchaInformation.content);
                     res.send(JSON.stringify(captchaInformation));
                 });
             });
@@ -226,6 +227,14 @@ class CaptchaManager {
         captchaContentEntry.content = data;
         captchaContentEntry.isCorrect = isCorrect;
         captchaContentEntry.save();
+    }
+
+    static randomizeCaptchaContent(content)
+    {
+        for (let i = content.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [content[i], content[j]] = [content[j], content[i]];
+        }
     }
 }
 
