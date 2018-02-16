@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
 const events = require('events');
 const helmet = require('helmet');
 
@@ -21,6 +20,7 @@ class HttpServer {
         this.port = 3000;
         this.httpServer = express();
         this.httpServer.use(bodyParser.urlencoded({ extended: true }));
+        this.httpServer.use('/data', express.static('data'));
         this.httpServer.set('title', 'CAPTCHA API');
         this.events = new events.EventEmitter();
         this.httpServer.post('/requestToken',function (req, res){

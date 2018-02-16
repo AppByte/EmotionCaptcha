@@ -157,10 +157,10 @@ class CaptchaManager {
                 captchaOne.fk_captchas_type = captchaTypeImage.id;
                 captchaOne.context = "How many from the server?";
                 captchaOne.save().then(function() {
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", false, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", false, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", false, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://via.placeholder.com/170x100", true, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
+                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeImage.id, captchaOne.id);
                 });
             });
         });
