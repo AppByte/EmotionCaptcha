@@ -165,6 +165,11 @@
     max-width: 270px;
 }
 
+.captcha-single-image
+{
+    margin-bottom: 5px;
+}
+
 @-webkit-keyframes sk-stretchdelay {
     0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
     20% { -webkit-transform: scaleY(1.0) }

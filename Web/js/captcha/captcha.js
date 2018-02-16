@@ -28,7 +28,10 @@ $.fn.mycaptcha = function(configuration) {
         captchaContainer: null,
         captchaLayout: null
     };
-
+    var textCaptcha = {
+        captchaContainer: null,
+        captchaLayout: null
+    };
     var userData = {
         selected: null
     };
@@ -78,6 +81,10 @@ $.fn.mycaptcha = function(configuration) {
             case "Audio":
                 elements.captchaPopupContainer.addClass("captcha-container-audio");
                 createAudioCaptcha(result.content);
+                break;
+            case "Text":
+                elements.captchaPopupContainer.addClass("captcha-container-text");
+                createTextCaptcha(result.content);
                 break;
             default:
                 displayCaptchaContainer();
@@ -148,6 +155,18 @@ $.fn.mycaptcha = function(configuration) {
         {
             userData.selected = $(this);
             console.log(userData.selected);
+        })
+    };
+
+    var createTextCaptcha = function(content)
+    {
+        textCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
+        var image = $("<div class='captcha-single-image'><img width='318' height='150' src='"+content[0].data+"'/></div>").appendTo(textCaptcha.captchaContainer);
+        var input = $("<input class='form-control' placeholder='Please enter your answer' />").appendTo(textCaptcha.captchaContainer);
+
+        input.change(function()
+        {
+            userData.selected = $(this).val();
         })
     };
 
@@ -224,12 +243,19 @@ $.fn.mycaptcha = function(configuration) {
             return;
         }
 
-        $.post("http://localhost:3000/verifyCaptcha", {
+        var postData = {
             apiToken: sha256(configuration.apiKey),
-            result: userData.selected.attr("data-value"),
+            result: userData.selected,
             captchaID: elements.captchaID,
             captchaType: elements.captchaType
-        }).done(function(result) {
+        };
+
+        if (elements.captchaType !== "Text")
+        {
+            postData.result = userData.selected.attr("data-value");
+        }
+
+        $.post("http://localhost:3000/verifyCaptcha", postData).done(function(result) {
 
             if (!result)
             {
