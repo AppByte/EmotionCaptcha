@@ -3,7 +3,6 @@ const FileSystem = require(path.resolve(__dirname, "./fileSystem" ));
 const HttpServer = require(path.resolve(__dirname, "./httpServer" ));
 const Crypto = require(path.resolve(__dirname, "./crypto" ));
 const CaptchaManager = require(path.resolve(__dirname, "./captchaManager" ));
-
 /**
  * Represents the server class.
  * */
@@ -30,6 +29,7 @@ class Server {
         }
 
         this.captchaManager.establishConnection();
+
     }
 
     onRequestedTokenCallBack(req, res)

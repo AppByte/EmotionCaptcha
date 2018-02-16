@@ -13,7 +13,6 @@ const CaptchaContent = dbConnection.import(path.join(__dirname, "./models/captch
 const Crypto = require(path.join(__dirname, "./crypto"));
 const minHashRounds = 1000;
 const maxHashRounds = 10000;
-
 /**
  * Interacts with the database
  * */
@@ -127,10 +126,12 @@ class CaptchaManager {
 
             if (isCorrectImage)
             {
+                console.log("correct");
                 res.send(JSON.stringify(true));
                 return;
             }
 
+            console.log("not correct");
             res.send(JSON.stringify(false));
         });
     }

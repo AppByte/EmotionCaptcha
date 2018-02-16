@@ -187,7 +187,7 @@ $.fn.mycaptcha = function(configuration) {
             apiToken: sha256(configuration.apiKey),
             result: userData.selected.attr("data-value")
         }).done(function(result) {
-            console.log(result);
+
             if (!result)
             {
                 reloadCaptcha();
