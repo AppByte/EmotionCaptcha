@@ -218,7 +218,7 @@ $.fn.mycaptcha = function(configuration) {
 
     var verifyCaptcha = function()
     {
-        if (userData.selected == null)
+        if (userData.selected === null)
         {
             alert("Attention - you must select something!");
             return;
@@ -242,9 +242,10 @@ $.fn.mycaptcha = function(configuration) {
             }
 
             displayCaptchaContainer();
-        });
 
-        console.log("sent");
+            elements.captchaButton.html("Verified");
+            elements.captchaButton.unbind( "click" )
+        });
     };
 
     var reloadCaptcha = function()

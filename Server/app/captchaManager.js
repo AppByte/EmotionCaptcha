@@ -52,46 +52,39 @@ class CaptchaManager {
             context: null,
         };
 
-        CaptchaTypes.count().then(captchaTypeCount => {
-            let randomCaptchaType =  Crypto.generateRandom(1, captchaTypeCount);
+        CaptchaTypes.findAll().then(captchaTypes => {
+            let randomCaptchaTypeIndex = Crypto.generateRandom(0, captchaTypes.length - 1);
+            let randomCaptchaType =  captchaTypes[randomCaptchaTypeIndex].id;
+            captchaInformation.captchaType = captchaTypes[randomCaptchaTypeIndex].description;
+            Captchas.findAll({where: {fk_captchas_type: randomCaptchaType}}).then(function (randomCaptchas) {
+                let randomCaptchaIndex =  Crypto.generateRandom(0, randomCaptchas.length - 1);
+                captchaInformation.captchaID = Crypto.generateHashValue(randomCaptchas[randomCaptchaIndex].id);
+                captchaInformation.context = randomCaptchas[randomCaptchaIndex].context;
+                CaptchaContent.findAll({
+                    where: {
+                        fk_imageCaptchas_captchaID: randomCaptchas[randomCaptchaIndex].id,
+                        fk_captchaTypes_id: randomCaptchaType
+                    }
+                }).then(function (results) {
+                    let content = [];
+                    for (let i = 0; i < results.length; i++) {
 
-            // finds the
-            CaptchaTypes.findOne({where: {id: randomCaptchaType}}).then(function(captchaTypeInformation) {
+                        let result = {
+                            data: results[i].content,
+                            value: results[i].isCorrect
+                        };
 
-                captchaInformation.captchaType = captchaTypeInformation.description;
-                Captchas.count().then(function (captchaCount) {
-                    let randomCaptchaID =  Crypto.generateRandom(1, captchaCount);
-                    captchaInformation.captchaID = Crypto.generateHashValue(randomCaptchaID);
-                    Captchas.findOne({ where: {fk_captchas_type: randomCaptchaID}}).then(function (randomCaptcha) {
-                        captchaInformation.context = randomCaptcha.context;
+                        let iterrations = Crypto.generateRandom(minHashRounds, maxHashRounds);
+                        for (let i = 0; i < iterrations; i++)
+                        {
+                            result.value = Crypto.generateHashValue(result.value);
+                        }
 
-                        CaptchaContent.findAll({
-                            where: {
-                                fk_imageCaptchas_captchaID: randomCaptchaID,
-                                fk_captchaTypes_id: randomCaptchaType
-                            }
-                        }).then(function (results) {
-                            let content = [];
-                            for (let i = 0; i < results.length; i++) {
+                        content.push(result);
+                    }
 
-                                let result = {
-                                    data: results[i].content,
-                                    value: results[i].isCorrect
-                                };
-
-                                let iterrations = Crypto.generateRandom(minHashRounds, maxHashRounds);
-                                for (let i = 0; i < iterrations; i++)
-                                {
-                                    result.value = Crypto.generateHashValue(result.value);
-                                }
-
-                                content.push(result);
-                            }
-
-                            captchaInformation.content = content;
-                            res.send(JSON.stringify(captchaInformation));
-                        });
-                    });
+                    captchaInformation.content = content;
+                    res.send(JSON.stringify(captchaInformation));
                 });
             });
         });
