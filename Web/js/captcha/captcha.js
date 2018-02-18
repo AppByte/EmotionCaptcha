@@ -89,7 +89,8 @@ $.fn.emotionCaptcha = function(configuration) {
      * Gets a captcha from the server.
      * */
     var getCaptcha = function() {
-        $.post("http://localhost:3000/requestCaptcha").done(function(result) {
+        var userLang = navigator.language || navigator.userLanguage;
+        $.post("http://localhost:3000/requestCaptcha",{language: userLang}).done(function(result) {
             elements.captchaButton.appendTo(elements.targetElement);
             elements.captchaPopupContainer.appendTo(elements.targetElement);
             elements.loadingBar = $("<div class=\"loader\"></div>").appendTo(elements.captchaPopupContainer);
@@ -423,8 +424,9 @@ $.fn.emotionCaptcha = function(configuration) {
             "</div>");
 
         resizeCaptcha();
+        var userLang = navigator.language || navigator.userLanguage;
         $.post("http://localhost:3000/requestCaptcha", {
-            apiToken: sha256(configuration.apiKey)
+            language: userLang
         }).done(function(result) {
             elements.captchaContainer.empty();
             createCaptcha(result);
