@@ -170,6 +170,15 @@
     margin-bottom: 5px;
 }
 
+.captcha-drop-container
+{
+    border-width: 1px;
+    border-style: dotted;
+    border-color: black;
+    min-width: 100%;
+    text-align: center;
+}
+
 @-webkit-keyframes sk-stretchdelay {
     0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
     20% { -webkit-transform: scaleY(1.0) }

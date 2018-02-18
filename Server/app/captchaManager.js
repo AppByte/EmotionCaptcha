@@ -53,7 +53,7 @@ class CaptchaManager {
         };
 
         CaptchaTypes.findAll().then(captchaTypes => {
-            let randomCaptchaTypeIndex = Crypto.generateRandom(0, captchaTypes.length - 1);
+            let randomCaptchaTypeIndex = Crypto.generateRandom(3, captchaTypes.length - 1);
             let randomCaptchaType =  captchaTypes[randomCaptchaTypeIndex].id;
             captchaInformation.captchaType = captchaTypes[randomCaptchaTypeIndex].description;
             Captchas.findAll({where: {fk_captchas_type: randomCaptchaType}}).then(function (randomCaptchas) {
@@ -196,46 +196,52 @@ class CaptchaManager {
         let captchaTypeImage = CaptchaTypes.build();
         captchaTypeImage.description = "Image";
         captchaTypeImage.save().then(function() {
-            captchaTypeImage.save().then(function() {
-                let captchaOne = Captchas.build();
-                captchaOne.fk_captchas_type = captchaTypeImage.id;
-                captchaOne.context = "How many from the server?";
-                captchaOne.save().then(function() {
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeImage.id, captchaOne.id);
-                });
+            let captchaOne = Captchas.build();
+            captchaOne.fk_captchas_type = captchaTypeImage.id;
+            captchaOne.context = "How many from the server?";
+            captchaOne.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeImage.id, captchaOne.id);
             });
         });
 
         let captchaTypeAudio = CaptchaTypes.build();
         captchaTypeAudio.description = "Audio";
         captchaTypeAudio.save().then(function() {
-            captchaTypeAudio.save().then(function() {
-                let captchaTwo = Captchas.build();
-                captchaTwo.fk_captchas_type = captchaTypeAudio.id;
-                captchaTwo.context = "How many from the server audio?";
-                captchaTwo.save().then(function() {
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", true, captchaTypeAudio.id, captchaTwo.id);
-                });
+            let captchaTwo = Captchas.build();
+            captchaTwo.fk_captchas_type = captchaTypeAudio.id;
+            captchaTwo.context = "How many from the server audio?";
+            captchaTwo.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", true, captchaTypeAudio.id, captchaTwo.id);
             });
         });
 
         let captchaTypeText = CaptchaTypes.build();
         captchaTypeText.description = "Text";
         captchaTypeText.save().then(function() {
-            captchaTypeAudio.save().then(function() {
-                let captchaThree = Captchas.build();
-                captchaThree.fk_captchas_type = captchaTypeText.id;
-                captchaThree.context = "How many from the server text?";
-                captchaThree.save().then(function() {
-                    CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeText.id, captchaThree.id, "Dog");
-                });
+            let captchaThree = Captchas.build();
+            captchaThree.fk_captchas_type = captchaTypeText.id;
+            captchaThree.context = "How many from the server text?";
+            captchaThree.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeText.id, captchaThree.id, "Dog");
             });
+        });
+
+        let captchaTypeInteractive = CaptchaTypes.build();
+        captchaTypeInteractive.description = "Interactive";
+        captchaTypeInteractive.save().then(function() {
+            let captchaFour = Captchas.build();
+            captchaFour.fk_captchas_type = captchaTypeInteractive.id;
+            captchaFour.context = "How many from the server text?";
+            captchaFour.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);            });
         });
     }
 

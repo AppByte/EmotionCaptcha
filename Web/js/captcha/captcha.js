@@ -32,6 +32,11 @@ $.fn.mycaptcha = function(configuration) {
         captchaContainer: null,
         captchaLayout: null
     };
+    var interactiveCaptcha = {
+        captchaContainer: null,
+        captchaLayout: null
+    };
+
     var userData = {
         selected: null
     };
@@ -85,6 +90,10 @@ $.fn.mycaptcha = function(configuration) {
             case "Text":
                 elements.captchaPopupContainer.addClass("captcha-container-text");
                 createTextCaptcha(result.content);
+                break;
+            case "Interactive":
+                elements.captchaPopupContainer.addClass("captcha-container-interactive");
+                createInteractiveCaptcha(result.content);
                 break;
             default:
                 displayCaptchaContainer();
@@ -168,6 +177,43 @@ $.fn.mycaptcha = function(configuration) {
         {
             userData.selected = $(this).val();
         })
+    };
+
+    var createInteractiveCaptcha = function(content)
+    {
+        interactiveCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
+        interactiveCaptcha.captchaLayout = $("<div class='row align-content-center'></div>").appendTo(interactiveCaptcha.captchaContainer);
+        interactiveCaptcha.captchaLayout.empty();
+
+        var dropContainer = $("<div class='col-md-12'></div>").appendTo(interactiveCaptcha.captchaLayout);
+        var dropZone = $("<div class=\"jumbotron captcha-drop-container\"><p>Drop answer here</p></div>").appendTo(dropContainer);
+        dropZone.droppable({
+            accept: '.captcha-interactive-image',
+            drop: function( event, ui ) {
+
+                if (userData.selected !== null)
+                {
+                    $(userData.selected).animate({
+                        top: "0px",
+                        left: "0px"
+                    });
+
+                    userData.selected.draggable({disabled: false});
+                }
+
+                userData.selected = $(ui.draggable);
+                userData.selected.draggable({disabled: true});
+            }
+        });
+
+        for (var i = 0; i < content.length; i++) {
+            var container = $("<div class='col-xs-6 captcha-interactive-image' data-value='"+ content[i].value +"'></div>").appendTo(interactiveCaptcha.captchaLayout);
+            container.draggable({revert: 'invalid'});
+            var imageContainer = $("<div class='captcha-image-container'></div>").appendTo(container);
+            var imageSelectionButton = $("<a class='captcha-image-button'></a>").appendTo(imageContainer);
+            $("<img class='rounded captcha-image' src='"+ content[i].data +"' />").appendTo(imageSelectionButton);
+        }
+
     };
 
     var displayCaptchaContainer = function () {
