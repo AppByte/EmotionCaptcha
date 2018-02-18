@@ -186,7 +186,7 @@ $.fn.mycaptcha = function(configuration) {
         interactiveCaptcha.captchaLayout.empty();
 
         var dropContainer = $("<div class='col-md-12'></div>").appendTo(interactiveCaptcha.captchaLayout);
-        var dropZone = $("<div class=\"jumbotron captcha-drop-container\"><p>Drop answer here</p></div>").appendTo(dropContainer);
+        var dropZone = $("<div class=\"jumbotron captcha-drop-container\"><p>Drop the correct image here</p></div>").appendTo(dropContainer);
         dropZone.droppable({
             accept: '.captcha-interactive-image',
             drop: function( event, ui ) {
