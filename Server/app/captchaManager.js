@@ -16,7 +16,10 @@ const maxHashRounds = 10000;
 
 
 /**
- * Interacts with the database
+ * Interacts with the database, fetches captchas and validates captchas.
+ *
+ * @author Daniel Strebinger
+ * @version 1.0
  * */
 class CaptchaManager {
 
@@ -43,6 +46,11 @@ class CaptchaManager {
             });
     };
 
+    /**
+     * Sends a captcha to the client which requested one.
+     *
+     * @param res - Contains the response object.
+     * */
     sendCaptcha(res) {
 
         let captchaInformation = {
@@ -91,6 +99,14 @@ class CaptchaManager {
         });
     }
 
+    /**
+     * Verifies a captcha.
+     *
+     * @param selection Represents the selected content of the user.
+     * @param captchaID Contains the id of the captcha.
+     * @param captchaType Contains the type of the captcha.
+     * @param res Contains the response object.
+     * */
     verifyCaptcha(selection, captchaID, captchaType, res)
     {
         CaptchaTypes.findAll({where :{captchaType_description: captchaType}}).then(function(results) {
@@ -247,11 +263,17 @@ class CaptchaManager {
 
     /**
      * Creates an captcha content entry.
+     *
+     * @param data Contains the data of the entry.
+     * @param isCorrect Contains a boolean value indicating whether the entry is a correct one or not.
+     * @param captchaTypeID Contains the id of the captcha type.
+     * @param captchaID Contains the id of the captcha.
+     * @param contentDescription Contains an optional description of the content.
      * */
-    static createCaptchaContentEntry(data, isCorrect, captchaType, captchaID, contentDescription)
+    static createCaptchaContentEntry(data, isCorrect, captchaTypeID, captchaID, contentDescription)
     {
         let captchaContentEntry = CaptchaContent.build();
-        captchaContentEntry.fk_captchaTypes_id = captchaType;
+        captchaContentEntry.fk_captchaTypes_id = captchaTypeID;
         captchaContentEntry.fk_imageCaptchas_captchaID = captchaID;
         captchaContentEntry.content = data;
         captchaContentEntry.isCorrect = isCorrect;
@@ -259,6 +281,11 @@ class CaptchaManager {
         captchaContentEntry.save();
     }
 
+    /**
+     * Randomizes the answer possibilities of a captcha.
+     *
+     * @param content Contains the content to randomize.
+     * */
     static randomizeCaptchaContent(content)
     {
         for (let i = content.length - 1; i > 0; i--) {

@@ -1,5 +1,9 @@
-const CaptchaTypes =
-
+/**
+ * Represents the model for a captcha type.
+ *
+ * @author Daniel Strebinger
+ * @version 1.0
+ * */
 module.exports = function(sequelize, DataTypes){
     return sequelize.define('CaptchaTypes', {
         id: {

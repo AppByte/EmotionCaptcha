@@ -1,6 +1,11 @@
 const crypto = require('crypto');
-const key = "supersecretkey";
 
+/**
+ * This class can be used to perform crypto operations.
+ *
+ * @author Daniel Strebinger
+ * @version 1.0
+ * */
 class Crypto
 {
     /**
@@ -13,25 +18,16 @@ class Crypto
         return sha.digest('hex');
     }
 
-    static generateHashValue(value)
+    /**
+     * Generates a hash value of a given content
+     *
+     * @param content Contains the content.
+     * */
+    static generateHashValue(content)
     {
         let sha = crypto.createHash('sha256');
-        sha.update(value.toString());
+        sha.update(content.toString());
         return sha.digest('hex');
-    }
-
-    static encrypt(data) {
-        var cipher = crypto.createCipher('aes-256-cbc', key);
-        var crypted = cipher.update(data.toString(), 'utf-8', 'hex');
-        crypted += cipher.final('hex');
-        return crypted;
-    }
-
-    static decrypt(data) {
-        var decipher = crypto.createDecipher('aes-256-cbc', key);
-        var decrypted = decipher.update(data.toString(), 'hex', 'utf-8');
-        decrypted += decipher.final('utf-8');
-        return decrypted;
     }
 
     /**

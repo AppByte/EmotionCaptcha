@@ -1,3 +1,9 @@
+/**
+ * Represents the model for the content of a captcha.
+ *
+ * @author Daniel Strebinger
+ * @version 1.0
+ * */
 module.exports = module.exports = function(sequelize, DataTypes){
     return sequelize.define('CaptchaContent', {
         id: {
