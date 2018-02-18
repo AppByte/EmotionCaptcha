@@ -23,6 +23,9 @@ class HttpServer {
         this.httpServer.use('/data', express.static('data'));
         this.httpServer.set('title', 'CAPTCHA API');
         this.events = new events.EventEmitter();
+        this.httpServer.post('/requestToken',function (req, res){
+            this.events.emit('onRequestedToken', req, res);
+        }.bind(this));
         this.httpServer.post('/requestCaptcha',function (req, res){
             this.events.emit('onRequestedCaptcha', req, res);
         }.bind(this));

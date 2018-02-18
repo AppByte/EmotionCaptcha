@@ -18,6 +18,7 @@ class Server {
     constructor()
     {
         this.httpServer = new HttpServer();
+        this.httpServer.events.on('onRequestedToken', this.onRequestedTokenCallBack.bind(this));
         this.httpServer.events.on('onRequestedCaptcha', this.onRequestedCaptcha.bind(this));
         this.httpServer.events.on('onVerifyCaptcha', this.onVerifyCaptcha.bind(this));
         this.captchaManager = new CaptchaManager();
@@ -38,12 +39,36 @@ class Server {
 
     }
 
+    /**
+     * Represents the call back method for the on requested token event.
+     *
+     * @param req Contains the request object.
+     * @param res Contains the response object.
+     * */
+    onRequestedTokenCallBack(req, res)
+    {
+        res.header("Content-Type", "text/json");
+        res.send(JSON.stringify({token: Crypto.generateKey()}));
+    }
+
+    /**
+     * Represents the call back method for the on requested captcha event.
+     *
+     * @param req Contains the request object.
+     * @param res Contains the response object.
+     * */
     onRequestedCaptcha(req, res)
     {
         res.header("Content-Type", "text/json");
         this.captchaManager.sendCaptcha(res);
     }
 
+    /**
+     * Represents the call back method for the on verify captcha event.
+     *
+     * @param req Contains the request object.
+     * @param res Contains the response object.
+     * */
     onVerifyCaptcha(req, res)
     {
         res.header("Content-Type", "text/json");

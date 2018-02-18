@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#Captcha").mycaptcha({
+    $("#Captcha").emotionCaptcha({
         apiKey: "abc",
         //orientation: "bellow",
         verified: function()

@@ -1,4 +1,13 @@
-$.fn.mycaptcha = function(configuration) {
+/**
+ * Defines the emotion captcha.
+ *
+ * @param configuration Contains the configuration for the captcha.
+ * */
+$.fn.emotionCaptcha = function(configuration) {
+
+    /**
+     * Contains the elements of the captcha.
+     * */
     var elements = {
         loadingBar: null,
         targetElement: $(this),
@@ -13,6 +22,10 @@ $.fn.mycaptcha = function(configuration) {
         captchaType: null,
         captchaID: null,
     };
+
+    /**
+     * Contains the dimension information of the browser.
+     * */
     var dimensions = {
         page: {
             height: $(document).height(),
@@ -20,26 +33,46 @@ $.fn.mycaptcha = function(configuration) {
         },
         containerOffset: 10
     };
+
+    /**
+     * Contains the specific elements for an image captcha.
+     * */
     var imageCaptcha = {
         captchaContainer: null,
         captchaLayout: null
     };
+
+    /**
+     * Contains the specific elements for an audio captcha.
+     * */
     var audioCaptcha = {
         captchaContainer: null,
         captchaLayout: null
     };
+
+    /**
+     * Contains the specific elements for a text captcha.
+     * */
     var textCaptcha = {
         captchaContainer: null,
         captchaLayout: null
     };
+
+    /**
+     * Contains the specific elements for an interactive captcha.
+     * */
     var interactiveCaptcha = {
         captchaContainer: null,
         captchaLayout: null
     };
 
+    /**
+     * Contains the data of the user.
+     * */
     var userData = {
         selected: null
     };
+
 
     $.post("http://localhost:3000/requestToken", {
         apiToken: sha256(configuration.apiKey)
