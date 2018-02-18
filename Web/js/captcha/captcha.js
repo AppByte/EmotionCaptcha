@@ -74,9 +74,10 @@ $.fn.emotionCaptcha = function(configuration) {
     };
 
 
-    $.post("http://localhost:3000/requestToken", {
-        apiToken: sha256(configuration.apiKey)
-    }).done(function(result) {
+    /**
+     * Posts to the server for the initial token
+     * */
+    $.post("http://localhost:3000/requestToken").done(function(result) {
         var captchaID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
         var captchaContainerID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
         elements.captchaButton = $(createCaptchaButton(captchaID));
@@ -84,10 +85,11 @@ $.fn.emotionCaptcha = function(configuration) {
         getCaptcha();
     });
 
+    /**
+     * Gets a captcha from the server.
+     * */
     var getCaptcha = function() {
-        $.post("http://localhost:3000/requestCaptcha", {
-            apiToken: sha256(configuration.apiKey)
-        }).done(function(result) {
+        $.post("http://localhost:3000/requestCaptcha").done(function(result) {
             elements.captchaButton.appendTo(elements.targetElement);
             elements.captchaPopupContainer.appendTo(elements.targetElement);
             elements.loadingBar = $("<div class=\"loader\"></div>").appendTo(elements.captchaPopupContainer);
@@ -99,12 +101,29 @@ $.fn.emotionCaptcha = function(configuration) {
         });
     };
 
+    /**
+     * Creates the captcha button.
+     *
+     * @param identifier Contains the identifier for the captcha
+     * */
     var createCaptchaButton = function(identifier) {
         return "<button class=\'btn btn-outline-success\' id='"+identifier+"'>Verify</button>";
     };
+
+    /**
+     * Creates the captcha container.
+     *
+     * @param identifier Contains the identifier for the captcha
+     * */
     var createCaptchaContainer = function(identifier) {
         return "<div class='captcha-popup-container hidden'id='" + identifier + "'></div>"
     };
+
+    /**
+     * Creates the captcha itself.
+     *
+     * @param result Contains the response of the server.
+     * */
     var createCaptcha = function(result) {
         console.log(result);
         elements.captchaUI.titleLabel.empty().append(result.context);
@@ -133,6 +152,10 @@ $.fn.emotionCaptcha = function(configuration) {
                 break;
         }
     };
+
+    /**
+     * Creates the main ui for the captcha.
+     * */
     var createCaptchaUI = function()
     {
         var headerContainer = $("<div class='captcha-header-container'></div>").appendTo(elements.captchaPopupContainer);
@@ -148,6 +171,11 @@ $.fn.emotionCaptcha = function(configuration) {
         elements.captchaUI.reloadButton.click(reloadCaptcha);
     };
 
+    /**
+     * Creates a captcha of type image.
+     *
+     * @param images Contains the images.
+     * */
     var createImageCaptcha = function(images)
     {
         imageCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
@@ -175,6 +203,11 @@ $.fn.emotionCaptcha = function(configuration) {
         }
     };
 
+    /**
+     * Creates a captcha of type audio.
+     *
+     * @param audio Contains the audio files.
+     * */
     var createAudioCaptcha = function(audio)
     {
         audioCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
@@ -200,6 +233,11 @@ $.fn.emotionCaptcha = function(configuration) {
         })
     };
 
+    /**
+     * Creates a captcha of type text.
+     *
+     * @param content Contains the content of the captcha.
+     * */
     var createTextCaptcha = function(content)
     {
         textCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
@@ -212,6 +250,11 @@ $.fn.emotionCaptcha = function(configuration) {
         })
     };
 
+    /**
+     * Creates a captcha of type interactive.
+     *
+     * @param content Contains the content of the interactive captcha.
+     * */
     var createInteractiveCaptcha = function(content)
     {
         interactiveCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
@@ -249,6 +292,9 @@ $.fn.emotionCaptcha = function(configuration) {
 
     };
 
+    /**
+     * Displays or hides the captcha container.
+     * */
     var displayCaptchaContainer = function () {
         if(elements.captchaPopupContainer.hasClass("visible"))
         {
@@ -263,6 +309,9 @@ $.fn.emotionCaptcha = function(configuration) {
         resizeCaptcha();
     };
 
+    /**
+     * Resizes the captcha container.
+     * */
     var resizeCaptcha = function() {
         var captchaButtonPosition = elements.captchaButton.offset();
         var captchaContainerPositions = {
@@ -314,6 +363,9 @@ $.fn.emotionCaptcha = function(configuration) {
         }
     };
 
+    /**
+     * Verify the captcha.
+     * */
     var verifyCaptcha = function()
     {
         if (userData.selected === null)
@@ -353,6 +405,9 @@ $.fn.emotionCaptcha = function(configuration) {
         });
     };
 
+    /**
+     * Reloads the captcha.
+     * */
     var reloadCaptcha = function()
     {
         elements.captchaUI.titleLabel.empty();
