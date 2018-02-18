@@ -53,7 +53,7 @@ class CaptchaManager {
         };
 
         CaptchaTypes.findAll().then(captchaTypes => {
-            let randomCaptchaTypeIndex = Crypto.generateRandom(3, captchaTypes.length - 1);
+            let randomCaptchaTypeIndex = Crypto.generateRandom(0, captchaTypes.length - 1);
             let randomCaptchaType =  captchaTypes[randomCaptchaTypeIndex].id;
             captchaInformation.captchaType = captchaTypes[randomCaptchaTypeIndex].description;
             Captchas.findAll({where: {fk_captchas_type: randomCaptchaType}}).then(function (randomCaptchas) {
