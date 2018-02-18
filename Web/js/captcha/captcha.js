@@ -390,7 +390,6 @@ $.fn.emotionCaptcha = function(configuration) {
         }
 
         var postData = {
-            apiToken: sha256(configuration.apiKey),
             result: userData.selected,
             captchaID: elements.captchaID,
             captchaType: elements.captchaType

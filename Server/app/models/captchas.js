@@ -14,8 +14,8 @@ module.exports = function(sequelize, DataTypes){
             allowNull: false
         },
         context: {
-            filed: 'context',
-            type: DataTypes.STRING,
+            filed: 'captchas_context',
+            type: DataTypes.JSON,
             allowNull: false
         }
     });

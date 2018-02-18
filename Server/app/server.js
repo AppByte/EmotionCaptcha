@@ -60,7 +60,7 @@ class Server {
     onRequestedCaptcha(req, res)
     {
         res.header("Content-Type", "text/json");
-        this.captchaManager.sendCaptcha(res);
+        this.captchaManager.sendCaptcha(res, req.body.language);
     }
 
     /**

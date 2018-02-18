@@ -49,9 +49,10 @@ class CaptchaManager {
     /**
      * Sends a captcha to the client which requested one.
      *
-     * @param res - Contains the response object.
+     * @param res Contains the response object.
+     * @param language Contains the language code.
      * */
-    sendCaptcha(res) {
+    sendCaptcha(res, language) {
 
         let captchaInformation = {
             captchaID: null,
@@ -67,7 +68,9 @@ class CaptchaManager {
             Captchas.findAll({where: {fk_captchas_type: randomCaptchaType}}).then(function (randomCaptchas) {
                 let randomCaptchaIndex =  Crypto.generateRandom(0, randomCaptchas.length - 1);
                 captchaInformation.captchaID = Crypto.generateHashValue(randomCaptchas[randomCaptchaIndex].id);
-                captchaInformation.context = randomCaptchas[randomCaptchaIndex].context;
+                console.log(randomCaptchas[randomCaptchaIndex].context);
+                console.log(randomCaptchas[randomCaptchaIndex].context["de"]);
+                captchaInformation.context = randomCaptchas[randomCaptchaIndex].context[language];
                 CaptchaContent.findAll({
                     where: {
                         fk_imageCaptchas_captchaID: randomCaptchas[randomCaptchaIndex].id,
@@ -214,7 +217,10 @@ class CaptchaManager {
         captchaTypeImage.save().then(function() {
             let captchaOne = Captchas.build();
             captchaOne.fk_captchas_type = captchaTypeImage.id;
-            captchaOne.context = "How many from the server?";
+            captchaOne.context = {
+                de: "Wie viel vom Server",
+                en: "How many from the server?"
+            };
             captchaOne.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
@@ -228,7 +234,10 @@ class CaptchaManager {
         captchaTypeAudio.save().then(function() {
             let captchaTwo = Captchas.build();
             captchaTwo.fk_captchas_type = captchaTypeAudio.id;
-            captchaTwo.context = "How many from the server audio?";
+            captchaTwo.context = {
+                de: "Wie viel vom Server audio",
+                en: "How many from the server? audio"
+            };
             captchaTwo.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
@@ -242,7 +251,10 @@ class CaptchaManager {
         captchaTypeText.save().then(function() {
             let captchaThree = Captchas.build();
             captchaThree.fk_captchas_type = captchaTypeText.id;
-            captchaThree.context = "How many from the server text?";
+            captchaThree.context = {
+                de: "Wie viel vom Server text",
+                en: "How many from the server? text"
+            };
             captchaThree.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeText.id, captchaThree.id, "Dog");
             });
@@ -253,11 +265,15 @@ class CaptchaManager {
         captchaTypeInteractive.save().then(function() {
             let captchaFour = Captchas.build();
             captchaFour.fk_captchas_type = captchaTypeInteractive.id;
-            captchaFour.context = "How many from the server text?";
+            captchaFour.context = {
+                de: "Wie viel vom Server interactive",
+                en: "How many from the server? interactive"
+            };
             captchaFour.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);            });
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
+            });
         });
     }
 
