@@ -6,6 +6,20 @@
 $.fn.emotionCaptcha = function(configuration) {
 
     /**
+     * Contains the translation for the specific countries.
+     * */
+    var language = {
+        de: {
+            audioNotSupported: "Der Browser unterstützt das abspielen von audio elementen nicht.",
+            audioAnswer: "Dieser Ton ist die richtige Antwort"
+        },
+        en: {
+            audioNotSupported: "Your browser does not support the audio element.",
+            audioAnswer: "This sounds like the correct answer"
+        }
+    };
+
+    /**
      * Contains the elements of the captcha.
      * */
     var elements = {
@@ -20,7 +34,7 @@ $.fn.emotionCaptcha = function(configuration) {
             reloadButton: null
         },
         captchaType: null,
-        captchaID: null,
+        captchaID: null
     };
 
     /**
@@ -70,7 +84,8 @@ $.fn.emotionCaptcha = function(configuration) {
      * Contains the data of the user.
      * */
     var userData = {
-        selected: null
+        selected: null,
+        language: language[configuration.languageCode]
     };
 
 
@@ -89,8 +104,7 @@ $.fn.emotionCaptcha = function(configuration) {
      * Gets a captcha from the server.
      * */
     var getCaptcha = function() {
-        var userLang = navigator.language || navigator.userLanguage;
-        $.post("http://localhost:3000/requestCaptcha",{language: userLang}).done(function(result) {
+        $.post("http://localhost:3000/requestCaptcha",{language: configuration.languageCode}).done(function(result) {
             elements.captchaButton.appendTo(elements.targetElement);
             elements.captchaPopupContainer.appendTo(elements.targetElement);
             elements.loadingBar = $("<div class=\"loader\"></div>").appendTo(elements.captchaPopupContainer);
@@ -219,10 +233,10 @@ $.fn.emotionCaptcha = function(configuration) {
         console.log(audio);
         for (var i = 0; i < audio.length; i++) {
             var listItem = $(" <li class=\"list-group-item\"></li>\n").appendTo(list);
-            $("<audio controls class='audioControl'><source src=\""+ audio[i].data+"\" type=\"audio/ogg\">Your browser does not support the audio element.</audio>     <div class=\"form-check\">\n" +
+            $("<audio controls class='audioControl'><source src=\""+ audio[i].data+"\" type=\"audio/ogg\"></audio>"+ userData.language.audioNotSupported +"<div class=\"form-check\">\n" +
                 "    <label class=\"form-check-label\">\n" +
                 "        <input type=\"radio\" class=\"form-check-input captcha-radio\" name=\"captchaRadio\" data-value=\""+ audio[i].value+"\">\n" +
-                "        This sounds like the correct answer" +
+                userData.language.audioAnswer +
                 "      </label>\n" +
                 "    </div>").appendTo(listItem);
         }
@@ -424,9 +438,8 @@ $.fn.emotionCaptcha = function(configuration) {
             "</div>");
 
         resizeCaptcha();
-        var userLang = navigator.language || navigator.userLanguage;
         $.post("http://localhost:3000/requestCaptcha", {
-            language: userLang
+            language: configuration.languageCode
         }).done(function(result) {
             elements.captchaContainer.empty();
             createCaptcha(result);
