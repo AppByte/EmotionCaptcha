@@ -11,11 +11,13 @@ $.fn.emotionCaptcha = function(configuration) {
     var language = {
         de: {
             audioNotSupported: "Der Browser unterstützt das abspielen von audio elementen nicht.",
-            audioAnswer: "Dieser Ton ist die richtige Antwort"
+            audioAnswer: "Dieser Ton ist die richtige Antwort",
+            verifyMessage: "Bitte verifiziere dich!"
         },
         en: {
             audioNotSupported: "Your browser does not support the audio element.",
-            audioAnswer: "This sounds like the correct answer"
+            audioAnswer: "This sounds like the correct answer",
+            verifyMessage: "Are you a human?"
         }
     };
 
@@ -23,7 +25,9 @@ $.fn.emotionCaptcha = function(configuration) {
      * Contains the elements of the captcha.
      * */
     var elements = {
+        targetForm: null,
         loadingBar: null,
+        captchaElement: null,
         targetElement: $(this),
         captchaButton: null,
         captchaPopupContainer: null,
@@ -95,8 +99,9 @@ $.fn.emotionCaptcha = function(configuration) {
     $.post("http://localhost:3000/requestToken").done(function(result) {
         var captchaID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
         var captchaContainerID = result.token.substring(Math.floor(Math.random() * result.token.length), Math.floor(Math.random() * result.token.length));
-        elements.captchaButton = $(createCaptchaButton(captchaID));
+        elements.captchaElement = createCaptchaElement(captchaID);
         elements.captchaPopupContainer = $(createCaptchaContainer(captchaContainerID));
+        registerFormHandler();
         getCaptcha();
     });
 
@@ -105,7 +110,7 @@ $.fn.emotionCaptcha = function(configuration) {
      * */
     var getCaptcha = function() {
         $.post("http://localhost:3000/requestCaptcha",{language: configuration.languageCode}).done(function(result) {
-            elements.captchaButton.appendTo(elements.targetElement);
+            elements.captchaElement.appendTo(elements.targetElement);
             elements.captchaPopupContainer.appendTo(elements.targetElement);
             elements.loadingBar = $("<div class=\"loader\"></div>").appendTo(elements.captchaPopupContainer);
             createCaptchaUI();
@@ -121,8 +126,30 @@ $.fn.emotionCaptcha = function(configuration) {
      *
      * @param identifier Contains the identifier for the captcha
      * */
-    var createCaptchaButton = function(identifier) {
-        return "<button class=\'btn btn-outline-success\' id='"+identifier+"'>Verify</button>";
+    var createCaptchaElement = function(identifier) {
+        var rootElement = $("<div class=\"captcha-element\"></div>");
+        var textContainer = $("<div class=\"captcha-element-text\"></div>").appendTo(rootElement);
+        $(" <label>"+language[configuration.languageCode].verifyMessage+"</label>").appendTo(textContainer);
+        elements.captchaButton = $(" <button type='button' class=\"btn btn-outline-success captcha-element-input\">Verify</button>").appendTo(textContainer);
+        return rootElement;
+    };
+
+    /**
+     * Registers the form handler.
+     * */
+    var registerFormHandler = function()
+    {
+        if (configuration.form === undefined) {
+            elements.targetForm = $(elements.targetElement.closest("form")[0]);
+        }
+        else
+        {
+            elements.targetForm = $(configuration.form);
+        }
+
+        elements.targetForm.submit(function (e) {
+            e.preventDefault();
+        });
     };
 
     /**
@@ -179,7 +206,7 @@ $.fn.emotionCaptcha = function(configuration) {
         elements.captchaContainer = $("<div class='captcha'></div>").appendTo(elements.captchaPopupContainer);
         elements.captchaPopupContainer.append("<div class='captcha-separator'></div>");
         var footerContainer =$("<div class='captcha-foo-container'></div>").appendTo(elements.captchaPopupContainer);
-        elements.captchaUI.verifyButton = $("<button class='btn btn-captcha-verify-outline captcha-verify-button'>Verify</button>").appendTo(footerContainer);
+        elements.captchaUI.verifyButton = $("<button type='button' class='btn btn-captcha-verify-outline captcha-verify-button'>Verify</button>").appendTo(footerContainer);
         elements.captchaUI.reloadButton = $("<a class='captcha-reload-button'><i class='fas fa-sync'></i></a>").appendTo(footerContainer);
 
         elements.captchaUI.verifyButton.click(verifyCaptcha);
@@ -408,14 +435,15 @@ $.fn.emotionCaptcha = function(configuration) {
                 return;
             }
 
-            if (configuration.verified() !== undefined){
+            if (configuration.verified !== undefined){
                 configuration.verified();
             }
 
             displayCaptchaContainer();
 
             elements.captchaButton.html("Verified");
-            elements.captchaButton.unbind( "click" )
+            elements.captchaButton.unbind( "click" );
+            elements.targetForm.unbind();
         });
     };
 

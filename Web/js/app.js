@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $("#Captcha").emotionCaptcha({
-        languageCode: "de",
+        languageCode: "en"
         //orientation: "bellow",
-        verified: function()
+        //form: "#ExampleForm",
+        /*verified: function()
         {
-            alert("You are a human");
-        }
+        }*/
     });
 });

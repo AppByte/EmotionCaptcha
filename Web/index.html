@@ -5,6 +5,7 @@
     <title>Captcha Example</title>
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/captcha/style.css">
+    <link rel="stylesheet" href="css/page.css">
     <script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/jqueryUI/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
@@ -14,8 +15,30 @@
     <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
-    <div style="margin-top: 670px;margin-left: 300px; ">
-        <div id="Captcha"></div>
+    <div class="container formContainer">
+        <div class="row">
+            <div class="col-md-6">
+                <form id="ExampleForm">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <div id="Captcha"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <!-- <div style="margin-top: 670px;margin-left: 300px; ">
+        <div id="Captcha"></div>
+    </div> -->
 </body>
 </html>
