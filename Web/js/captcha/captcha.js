@@ -12,12 +12,16 @@ $.fn.emotionCaptcha = function(configuration) {
         de: {
             audioNotSupported: "Der Browser unterstützt das abspielen von audio elementen nicht.",
             audioAnswer: "Dieser Ton ist die richtige Antwort",
-            verifyMessage: "Bitte verifiziere dich!"
+            verifyMessage: "Bitte verifiziere dich!",
+            unsolvedMessage: "Bitte löse das CAPTCHA",
+            nothingSelectedMessage: "Bitte löse das CAPTCHA"
         },
         en: {
             audioNotSupported: "Your browser does not support the audio element.",
             audioAnswer: "This sounds like the correct answer",
-            verifyMessage: "Are you a human?"
+            verifyMessage: "Are you a human?",
+            unsolvedMessage: "Please solve the captcha!",
+            nothingSelectedMessage: "Please solve the CAPTCHA"
         }
     };
 
@@ -37,6 +41,8 @@ $.fn.emotionCaptcha = function(configuration) {
             verifyButton: null,
             reloadButton: null
         },
+        captchaUnsolvedErrorElement: null,
+        captchaNothingSelectedErrorElement: null,
         captchaType: null,
         captchaID: null
     };
@@ -149,6 +155,11 @@ $.fn.emotionCaptcha = function(configuration) {
 
         elements.targetForm.submit(function (e) {
             e.preventDefault();
+
+            if (elements.captchaUnsolvedErrorElement == null)
+            {
+                displayUnsolvedErrorContainer()
+            }
         });
     };
 
@@ -412,7 +423,7 @@ $.fn.emotionCaptcha = function(configuration) {
     {
         if (userData.selected === null)
         {
-            alert("Attention - you must select something!");
+            displayNothingSelectedErrorContainer();
             return;
         }
 
@@ -443,8 +454,53 @@ $.fn.emotionCaptcha = function(configuration) {
 
             elements.captchaButton.html("Verified");
             elements.captchaButton.unbind( "click" );
+
+            if (elements.captchaUnsolvedErrorElement != null) {
+                elements.captchaUnsolvedErrorElement.remove();
+                elements.captchaUnsolvedErrorElement = null;
+            }
+
             elements.targetForm.unbind();
         });
+    };
+
+
+    /**
+     * Displays the unsolved catpcha error message.
+     * */
+    var displayUnsolvedErrorContainer = function()
+    {
+        elements.captchaUnsolvedErrorElement = $("<div class=\"alert alert-danger captcha-error\" role=\"alert\">\n" +
+            language[configuration.languageCode].unsolvedMessage +
+            "</div>");
+        elements.captchaUnsolvedErrorElement.appendTo(elements.targetElement);
+    };
+
+    /**
+     * Displays the unsolved catpcha error message.
+     * */
+    var displayNothingSelectedErrorContainer = function()
+    {
+        if (elements.captchaNothingSelectedErrorElement != null)
+        {
+            return;
+        }
+
+        elements.captchaNothingSelectedErrorElement = $("<div class=\"alert alert-danger captcha-error\" role=\"alert\">\n" +
+            language[configuration.languageCode].nothingSelectedMessage +
+            "</div>");
+        var dismissButton = $("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "    <span aria-hidden=\"true\">&times;</span>\n" +
+            "  </button>").appendTo(elements.captchaNothingSelectedErrorElement);
+        dismissButton.click(function() {
+           elements.captchaNothingSelectedErrorElement = null;
+        });
+
+        elements.captchaNothingSelectedErrorElement.prependTo(elements.captchaContainer);
+        setTimeout(function(){
+            elements.captchaNothingSelectedErrorElement.remove();
+            elements.captchaNothingSelectedErrorElement = null;
+        }, 6000);
     };
 
     /**
