@@ -298,7 +298,7 @@ $.fn.emotionCaptcha = function(configuration) {
     var createTextCaptcha = function(content)
     {
         textCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
-        var image = $("<div class='captcha-single-image'><img width='318' height='150' src='"+content[0].data+"'/></div>").appendTo(textCaptcha.captchaContainer);
+        var image = $("<div class='captcha-single-image'><img width='318' src='"+content[0].data+"'/></div>").appendTo(textCaptcha.captchaContainer);
         var input = $("<input class='form-control' placeholder='"+userData.language.enterMessageHere+"' />").appendTo(textCaptcha.captchaContainer);
 
         input.change(function()
