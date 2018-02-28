@@ -256,7 +256,7 @@ class CaptchaManager {
                 en: "How many from the server? text"
             };
             captchaThree.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeText.id, captchaThree.id, "Dog");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/F.png", true, captchaTypeText.id, captchaThree.id, "F");
             });
         });
 
@@ -270,6 +270,7 @@ class CaptchaManager {
                 en: "How many from the server? interactive"
             };
             captchaFour.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
