@@ -249,31 +249,130 @@ class CaptchaManager {
         let captchaTypeText = CaptchaTypes.build();
         captchaTypeText.description = "Text";
         captchaTypeText.save().then(function() {
+            let captchaOne = Captchas.build();
+            captchaOne.fk_captchas_type = captchaTypeText.id;
+            captchaOne.context = {
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
+            };
+            captchaOne.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/A.png", true, captchaTypeText.id, captchaOne.id, "A");
+            });
+
+            let captchaTwo = Captchas.build();
+            captchaTwo.fk_captchas_type = captchaTypeText.id;
+            captchaTwo.context = {
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
+            };
+            captchaTwo.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", true, captchaTypeText.id, captchaTwo.id, "E");
+            });
+
             let captchaThree = Captchas.build();
             captchaThree.fk_captchas_type = captchaTypeText.id;
             captchaThree.context = {
-                de: "Wie viel vom Server text",
-                en: "How many from the server? text"
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
             };
             captchaThree.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/F.png", true, captchaTypeText.id, captchaThree.id, "F");
+            });
+
+            let captchaFour = Captchas.build();
+            captchaFour.fk_captchas_type = captchaTypeText.id;
+            captchaFour.context = {
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
+            };
+            captchaFour.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", true, captchaTypeText.id, captchaFour.id, "G");
+            });
+
+            let captchaFive = Captchas.build();
+            captchaFive.fk_captchas_type = captchaTypeText.id;
+            captchaFive.context = {
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
+            };
+            captchaFive.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", true, captchaTypeText.id, captchaFive.id, "I");
+            });
+
+            let captchaSix = Captchas.build();
+            captchaSix.fk_captchas_type = captchaTypeText.id;
+            captchaSix.context = {
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
+            };
+            captchaSix.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/S.png", true, captchaTypeText.id, captchaSix.id, "S");
+            });
+
+            let captchaSeven = Captchas.build();
+            captchaSeven.fk_captchas_type = captchaTypeText.id;
+            captchaSeven.context = {
+                de: "Welcher Buchstabe wird im nachfolgenden Bild dargestellt?",
+                en: "Which letter is pictured within the following image?"
+            };
+            captchaSeven.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", true, captchaTypeText.id, captchaSeven.id, "T");
             });
         });
 
         let captchaTypeInteractive = CaptchaTypes.build();
         captchaTypeInteractive.description = "Interactive";
         captchaTypeInteractive.save().then(function() {
+            let captchaOne = Captchas.build();
+            captchaOne.fk_captchas_type = captchaTypeInteractive.id;
+            captchaOne.context = {
+                de: "Ziehe den fehlenden Buchstaben in den Ablagebereich.- Vervollständige das Wort: _lut",
+                en: "Drop the missing letter within the drop zone - Complete the word _low"
+            };
+            captchaOne.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", false, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", true, captchaTypeInteractive.id, captchaOne.id);
+            });
+
+            let captchaTwo = Captchas.build();
+            captchaTwo.fk_captchas_type = captchaTypeInteractive.id;
+            captchaTwo.context = {
+                de: "Ziehe den fehlenden Buchstaben in den Ablagebereich.- Vervollständige das Wort: _at",
+                en: "Drop the missing letter within the drop zone - Complete the word _ea"
+            };
+            captchaTwo.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", true, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaTwo.id);
+            });
+
+            let captchaThree = Captchas.build();
+            captchaThree.fk_captchas_type = captchaTypeInteractive.id;
+            captchaThree.context = {
+                de: "Ziehe den fehlenden Buchstaben in den Ablagebereich.- Vervollständige das Wort: Glückl_ch",
+                en: "Drop the missing letter within the drop zone - Complete the word im_tate"
+            };
+            captchaThree.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", true, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaThree.id);
+            });
+
             let captchaFour = Captchas.build();
             captchaFour.fk_captchas_type = captchaTypeInteractive.id;
             captchaFour.context = {
-                de: "Wie viel vom Server interactive",
-                en: "How many from the server? interactive"
+                de: "Ziehe den fehlenden Buchstaben in den Ablagebereich.- Vervollständige das Wort: _uchen",
+                en: "Drop the missing letter within the drop zone - Complete the word _earch"
             };
             captchaFour.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/S.png", true, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaFour.id);
             });
         });
     }
