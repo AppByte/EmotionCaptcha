@@ -14,14 +14,18 @@ $.fn.emotionCaptcha = function(configuration) {
             audioAnswer: "Dieser Ton ist die richtige Antwort",
             verifyMessage: "Bitte verifiziere dich!",
             unsolvedMessage: "Bitte löse das CAPTCHA",
-            nothingSelectedMessage: "Bitte löse das CAPTCHA"
+            nothingSelectedMessage: "Bitte löse das CAPTCHA",
+            dropMessage: "Ziehe das richtige Bild hier hinein",
+            enterMessageHere: "Bitte gib deine Antwort ein"
         },
         en: {
             audioNotSupported: "Your browser does not support the audio element.",
             audioAnswer: "This sounds like the correct answer",
             verifyMessage: "Are you a human?",
             unsolvedMessage: "Please solve the captcha!",
-            nothingSelectedMessage: "Please solve the CAPTCHA"
+            nothingSelectedMessage: "Please solve the CAPTCHA",
+            dropMessage: "Drop the correct answer here",
+            enterMessageHere: "Please enter your answer"
         }
     };
 
@@ -295,7 +299,7 @@ $.fn.emotionCaptcha = function(configuration) {
     {
         textCaptcha.captchaContainer = $("<div class='container-fluid'></div>").appendTo(elements.captchaContainer);
         var image = $("<div class='captcha-single-image'><img width='318' height='150' src='"+content[0].data+"'/></div>").appendTo(textCaptcha.captchaContainer);
-        var input = $("<input class='form-control' placeholder='Please enter your answer' />").appendTo(textCaptcha.captchaContainer);
+        var input = $("<input class='form-control' placeholder='"+userData.language.enterMessageHere+"' />").appendTo(textCaptcha.captchaContainer);
 
         input.change(function()
         {
@@ -315,7 +319,7 @@ $.fn.emotionCaptcha = function(configuration) {
         interactiveCaptcha.captchaLayout.empty();
 
         var dropContainer = $("<div class='col-md-12'></div>").appendTo(interactiveCaptcha.captchaLayout);
-        var dropZone = $("<div class=\"jumbotron captcha-drop-container\"><p>Drop the correct image here</p></div>").appendTo(dropContainer);
+        var dropZone = $("<div class=\"jumbotron captcha-drop-container\"><p>"+userData.language.dropMessage+"</p></div>").appendTo(dropContainer);
         dropZone.droppable({
             accept: '.captcha-interactive-image',
             drop: function( event, ui ) {
