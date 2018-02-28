@@ -212,7 +212,7 @@ class CaptchaManager {
         Captchas.sync();
 
 
-        let captchaTypeImage = CaptchaTypes.build();
+        /*let captchaTypeImage = CaptchaTypes.build();
         captchaTypeImage.description = "Image";
         captchaTypeImage.save().then(function() {
             let captchaOne = Captchas.build();
@@ -227,22 +227,113 @@ class CaptchaManager {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeImage.id, captchaOne.id);
             });
-        });
+        });*/
 
         let captchaTypeAudio = CaptchaTypes.build();
         captchaTypeAudio.description = "Audio";
         captchaTypeAudio.save().then(function() {
+            let captchaOne = Captchas.build();
+            captchaOne.fk_captchas_type = captchaTypeAudio.id;
+            captchaOne.context = {
+                de: "Welcher dieser Töne gehört der Kategorie Blues an?",
+                en: "Which of these sounds is part of the category Blues?"
+            };
+            captchaOne.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", true, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", false, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", false, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", false, captchaTypeAudio.id, captchaOne.id);
+            });
+
             let captchaTwo = Captchas.build();
             captchaTwo.fk_captchas_type = captchaTypeAudio.id;
             captchaTwo.context = {
-                de: "Wie viel vom Server audio",
-                en: "How many from the server? audio"
+                de: "Welcher dieser Töne gehört der Kategorie Country an?",
+                en: "Which of these sounds is part of the category Country?"
             };
             captchaTwo.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rain.mp3", true, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", true, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+            });
+
+            let captchaThree = Captchas.build();
+            captchaThree.fk_captchas_type = captchaTypeAudio.id;
+            captchaThree.context = {
+                de: "Welcher dieser Töne gehört der Kategorie Funk an?",
+                en: "Which of these sounds is part of the category Funk?"
+            };
+            captchaThree.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", false, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", false, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", true, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", false, captchaTypeAudio.id, captchaThree.id);
+            });
+
+            let captchaFour = Captchas.build();
+            captchaFour.fk_captchas_type = captchaTypeAudio.id;
+            captchaFour.context = {
+                de: "Welcher dieser Töne gehört der Kategorie Jazz an?",
+                en: "Which of these sounds is part of the category Jazz?"
+            };
+            captchaFour.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", false, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", false, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", false, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", true, captchaTypeAudio.id, captchaFour.id);
+            });
+
+            let captchaFive = Captchas.build();
+            captchaFive.fk_captchas_type = captchaTypeAudio.id;
+            captchaFive.context = {
+                de: "Welcher dieser Töne gehört der Kategorie Latin an?",
+                en: "Which of these sounds is part of the category Latin?"
+            };
+            captchaFive.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", true, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", false, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", false, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", false, captchaTypeAudio.id, captchaFive.id);
+            });
+
+            let captchaSix = Captchas.build();
+            captchaSix.fk_captchas_type = captchaTypeAudio.id;
+            captchaSix.context = {
+                de: "Welcher dieser Töne gehört der Kategorie Reggae an?",
+                en: "Which of these sounds is part of the category Reggae?"
+            };
+            captchaSix.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", false, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", true, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", false, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", false, captchaTypeAudio.id, captchaSix.id);
+            });
+
+            let captchaSeven = Captchas.build();
+            captchaSeven.fk_captchas_type = captchaTypeAudio.id;
+            captchaSeven.context = {
+                de: "Welcher dieser Töne gehört der Kategorie Rock an?",
+                en: "Which of these sounds is part of the category Rock?"
+            };
+            captchaSeven.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", false, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", false, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", true, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", false, captchaTypeAudio.id, captchaSeven.id);
+            });
+
+            let captchaEight = Captchas.build();
+            captchaEight.fk_captchas_type = captchaTypeAudio.id;
+            captchaEight.context = {
+                de: "Welcher dieser Töne gehört der Kategorie langsamer Blues an?",
+                en: "Which of these sounds is part of the category slow Blues?"
+            };
+            captchaEight.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", false, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", false, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", false, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", true, captchaTypeAudio.id, captchaEight.id);
             });
         });
 
@@ -356,8 +447,8 @@ class CaptchaManager {
                 en: "Drop the missing letter within the drop zone - Complete the word im_tate"
             };
             captchaThree.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", true, captchaTypeInteractive.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", true, captchaTypeInteractive.id, captchaThree.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaThree.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaThree.id);
             });
