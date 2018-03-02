@@ -339,8 +339,8 @@ class CaptchaManager {
             let captchaTwo = Captchas.build();
             captchaTwo.fk_captchas_type = captchaTypeAudio.id;
             captchaTwo.context = {
-                de: "Welcher dieser Töne gehört der Kategorie Country an?",
-                en: "Which of these sounds is part of the category Country?"
+                de: "Welcher dieser Töne verbinden sie mit einem Besuch auf eienr amerikanischen Ranch?",
+                en: "Which of these sounds will you associate when you visit an american ranch?"
             };
             captchaTwo.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", false, captchaTypeAudio.id, captchaTwo.id);
@@ -352,8 +352,8 @@ class CaptchaManager {
             let captchaThree = Captchas.build();
             captchaThree.fk_captchas_type = captchaTypeAudio.id;
             captchaThree.context = {
-                de: "Welcher dieser Töne gehört der Kategorie Funk an?",
-                en: "Which of these sounds is part of the category Funk?"
+                de: "Welcher dieser Töne verbinden sie mit einem Besuch in einer Diskothek?",
+                en: "Which of these sounds will you associate when you visit a night club?"
             };
             captchaThree.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", false, captchaTypeAudio.id, captchaThree.id);
@@ -365,8 +365,8 @@ class CaptchaManager {
             let captchaFour = Captchas.build();
             captchaFour.fk_captchas_type = captchaTypeAudio.id;
             captchaFour.context = {
-                de: "Welcher dieser Töne gehört der Kategorie Jazz an?",
-                en: "Which of these sounds is part of the category Jazz?"
+                de: "Welcher dieser Töne wird gehört einer afroamerikaischen Musikrichtung an?",
+                en: "Which of these sounds is part of the a afroamerican music scene?"
             };
             captchaFour.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", false, captchaTypeAudio.id, captchaFour.id);
@@ -378,8 +378,8 @@ class CaptchaManager {
             let captchaFive = Captchas.build();
             captchaFive.fk_captchas_type = captchaTypeAudio.id;
             captchaFive.context = {
-                de: "Welcher dieser Töne gehört der Kategorie Latin an?",
-                en: "Which of these sounds is part of the category Latin?"
+                de: "Welcher dieser Töne verbinden sie mit einem Urlaub?",
+                en: "Which of these sounds will you associate with a holiday trip?"
             };
             captchaFive.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82520303551572289611.mp3", true, captchaTypeAudio.id, captchaFive.id);
@@ -391,8 +391,8 @@ class CaptchaManager {
             let captchaSix = Captchas.build();
             captchaSix.fk_captchas_type = captchaTypeAudio.id;
             captchaSix.context = {
-                de: "Welcher dieser Töne gehört der Kategorie Reggae an?",
-                en: "Which of these sounds is part of the category Reggae?"
+                de: "Welcher dieser Töne verbinden sie mit einem Urlaub?",
+                en: "Which of these sounds will you associate with a holiday trip?"
             };
             captchaSix.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82520303551572289611.mp3", false, captchaTypeAudio.id, captchaSix.id);
