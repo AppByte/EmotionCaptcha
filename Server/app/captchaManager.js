@@ -318,6 +318,110 @@ class CaptchaManager {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/47579202656580708052.jpg", false, captchaTypeImage.id, captchaEight.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/21826566162590995454.jpg", false, captchaTypeImage.id, captchaEight.id);
             });
+
+            let captchaNine = Captchas.build();
+            captchaNine.fk_captchas_type = captchaTypeImage.id;
+            captchaNine.context = {
+                de: "Bitte wähle das richtige Farbe für die Jahreszeit \"Sommer\" aus",
+                en: "Please select the correct color for season \"Summer\""
+            };
+            captchaNine.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/68953278386113611970.jpg", false, captchaTypeImage.id, captchaNine.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/04683733132725464458.jpg", true, captchaTypeImage.id, captchaNine.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/99260814454914505509.jpg", false, captchaTypeImage.id, captchaNine.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/96517258225209048864.jpg", false, captchaTypeImage.id, captchaNine.id);
+            });
+
+            let captchaTen = Captchas.build();
+            captchaTen.fk_captchas_type = captchaTypeImage.id;
+            captchaTen.context = {
+                de: "Bitte wähle das richtige Farbe für die Jahreszeit \"Winter\" aus",
+                en: "Please select the correct color for season \"winter\""
+            };
+            captchaTen.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/68953278386113611970.jpg", true, captchaTypeImage.id, captchaTen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/04683733132725464458.jpg", false, captchaTypeImage.id, captchaTen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/99260814454914505509.jpg", false, captchaTypeImage.id, captchaTen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/96517258225209048864.jpg", false, captchaTypeImage.id, captchaTen.id);
+            });
+
+            let captchaEleven = Captchas.build();
+            captchaEleven.fk_captchas_type = captchaTypeImage.id;
+            captchaEleven.context = {
+                de: "Bitte wähle das richtige Farbe für die Jahreszeit \"Frühling\" aus",
+                en: "Please select the correct color for season \"Spring\""
+            };
+            captchaEleven.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/68953278386113611970.jpg", false, captchaTypeImage.id, captchaEleven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/04683733132725464458.jpg", false, captchaTypeImage.id, captchaEleven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/99260814454914505509.jpg", false, captchaTypeImage.id, captchaEleven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/96517258225209048864.jpg", true, captchaTypeImage.id, captchaEleven.id);
+            });
+
+            let captchaTwelve = Captchas.build();
+            captchaTwelve.fk_captchas_type = captchaTypeImage.id;
+            captchaTwelve.context = {
+                de: "Bitte wähle das richtige Farbe für die Jahreszeit \"Herbst\" aus",
+                en: "Please select the correct color for season \"autumn\""
+            };
+            captchaTwelve.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/68953278386113611970.jpg", false, captchaTypeImage.id, captchaTwelve.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/04683733132725464458.jpg", false, captchaTypeImage.id, captchaTwelve.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/99260814454914505509.jpg", true, captchaTypeImage.id, captchaTwelve.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/96517258225209048864.jpg", false, captchaTypeImage.id, captchaTwelve.id);
+            });
+
+            let captchaThirteen = Captchas.build();
+            captchaThirteen.fk_captchas_type = captchaTypeImage.id;
+            captchaThirteen.context = {
+                de: "Bitte wähle das richtige Farbe für das Gefühl \"kitschig\" aus",
+                en: "Please select the correct color for feeling \"kitsch\""
+            };
+            captchaThirteen.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/32804309827189812949.jpg", true, captchaTypeImage.id, captchaThirteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/86670211335056421511.jpg", false, captchaTypeImage.id, captchaThirteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/44453913141600512561.jpg", false, captchaTypeImage.id, captchaThirteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/77497275342367185080.jpg", false, captchaTypeImage.id, captchaThirteen.id);
+            });
+
+            let captchaFourteen = Captchas.build();
+            captchaFourteen.fk_captchas_type = captchaTypeImage.id;
+            captchaFourteen.context = {
+                de: "Bitte wähle das richtige Farbe für das Gefühl \"Erfolg\" aus",
+                en: "Please select the correct color for feeling \"success\""
+            };
+            captchaFourteen.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/32804309827189812949.jpg", false, captchaTypeImage.id, captchaFourteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/86670211335056421511.jpg", false, captchaTypeImage.id, captchaFourteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/44453913141600512561.jpg", false, captchaTypeImage.id, captchaFourteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/77497275342367185080.jpg", true, captchaTypeImage.id, captchaFourteen.id);
+            });
+
+            let captchaFifteen = Captchas.build();
+            captchaFifteen.fk_captchas_type = captchaTypeImage.id;
+            captchaFifteen.context = {
+                de: "Bitte wähle das richtige Farbe für das Gefühl \"Trauer\" aus",
+                en: "Please select the correct color for feeling \"sadness\""
+            };
+            captchaFifteen.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/32804309827189812949.jpg", false, captchaTypeImage.id, captchaFifteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/86670211335056421511.jpg", true, captchaTypeImage.id, captchaFifteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/44453913141600512561.jpg", false, captchaTypeImage.id, captchaFifteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/77497275342367185080.jpg", false, captchaTypeImage.id, captchaFifteen.id);
+            });
+
+            let captchaSixteen = Captchas.build();
+            captchaSixteen.fk_captchas_type = captchaTypeImage.id;
+            captchaSixteen.context = {
+                de: "Bitte wähle das richtige Farbe für das Gefühl \"Gefahr\" aus",
+                en: "Please select the correct color for feeling \"danger\""
+            };
+            captchaSixteen.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/32804309827189812949.jpg", false, captchaTypeImage.id, captchaSixteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/86670211335056421511.jpg", false, captchaTypeImage.id, captchaSixteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/44453913141600512561.jpg", true, captchaTypeImage.id, captchaSixteen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/77497275342367185080.jpg", false, captchaTypeImage.id, captchaSixteen.id);
+            });
         });
 
         let captchaTypeAudio = CaptchaTypes.build();
