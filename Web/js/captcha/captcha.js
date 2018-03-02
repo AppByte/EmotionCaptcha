@@ -275,7 +275,7 @@ $.fn.emotionCaptcha = function(configuration) {
         console.log(audio);
         for (var i = 0; i < audio.length; i++) {
             var listItem = $(" <li class=\"list-group-item\"></li>\n").appendTo(list);
-            $("<audio controls class='audioControl'><source src=\""+ audio[i].data+"\" type=\"audio/ogg\"></audio>"+ userData.language.audioNotSupported +"<div class=\"form-check\">\n" +
+            $("<audio controls class='audioControl'><source src=\""+ audio[i].data+"\" type=\"audio/ogg\"></audio><div class=\"form-check\">\n" +
                 "    <label class=\"form-check-label\">\n" +
                 "        <input type=\"radio\" class=\"form-check-input captcha-radio\" name=\"captchaRadio\" data-value=\""+ audio[i].value+"\">\n" +
                 userData.language.audioAnswer +

@@ -212,22 +212,61 @@ class CaptchaManager {
         Captchas.sync();
 
 
-        /*let captchaTypeImage = CaptchaTypes.build();
+        let captchaTypeImage = CaptchaTypes.build();
         captchaTypeImage.description = "Image";
         captchaTypeImage.save().then(function() {
             let captchaOne = Captchas.build();
             captchaOne.fk_captchas_type = captchaTypeImage.id;
             captchaOne.context = {
-                de: "Wie viel vom Server",
-                en: "How many from the server?"
+                de: "Bitte wähle das richtige Bild für das Sprichwort \"Jeder Topf findet einen Deckel\"",
+                en: "Please select the correct image for the methaper \"Jeder Topf findet einen Deckel\""
             };
             captchaOne.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", false, captchaTypeImage.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/170x100.png", true, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/39452720586432993504.jpg", false, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/93139757706271484581.jpg", true, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/47579202656580708052.jpg", false, captchaTypeImage.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/21826566162590995454.jpg", false, captchaTypeImage.id, captchaOne.id);
             });
-        });*/
+
+            let captchaTwo = Captchas.build();
+            captchaTwo.fk_captchas_type = captchaTypeImage.id;
+            captchaTwo.context = {
+                de: "Bitte wähle das richtige Bild für das Sprichwort \"Sein blaues wunder erleben\"",
+                en: "Please select the correct image for the methaper \"Sein blaues wunder erleben\""
+            };
+            captchaTwo.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/79417157102589900866.jpg", true, captchaTypeImage.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/77680309617638307748.jpg", false, captchaTypeImage.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/07875396568238921752.jpg", false, captchaTypeImage.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/28513888160470558078.jpg", false, captchaTypeImage.id, captchaTwo.id);
+            });
+
+            let captchaThree = Captchas.build();
+            captchaThree.fk_captchas_type = captchaTypeImage.id;
+            captchaThree.context = {
+                de: "Bitte wähle das richtige Bild für das Sprichwort \"Schnee von gestern\"",
+                en: "Please select the correct image for the methaper \"Schnee von gestern\""
+            };
+            captchaThree.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/53394563223907268613.jpg", true, captchaTypeImage.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/72113237469675466196.jpg", false, captchaTypeImage.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/10283540242066472466.jpg", false, captchaTypeImage.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/97277981585528267194.jpg", false, captchaTypeImage.id, captchaThree.id);
+            });
+
+            let captchaFour = Captchas.build();
+            captchaFour.fk_captchas_type = captchaTypeImage.id;
+            captchaFour.context = {
+                de: "Bitte wähle das richtige Bild für das Sprichwort \"Aus allen Wolken fallen\"",
+                en: "Please select the correct image for the methaper \"Aus allen Wolken fallen\""
+            };
+            captchaFour.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/66643524236465029243.jpg", false, captchaTypeImage.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/31518386957429524363.jpg", true, captchaTypeImage.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/40517149129119939501.jpg", false, captchaTypeImage.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/57476833332522558578.jpg", false, captchaTypeImage.id, captchaFour.id);
+            });
+        });
 
         let captchaTypeAudio = CaptchaTypes.build();
         captchaTypeAudio.description = "Audio";
@@ -239,10 +278,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Blues?"
             };
             captchaOne.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", true, captchaTypeAudio.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", false, captchaTypeAudio.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", false, captchaTypeAudio.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", false, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", true, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/65259737766959388428.mp3", false, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/00372156022373196967.mp3", false, captchaTypeAudio.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/26087630137366269179.mp3", false, captchaTypeAudio.id, captchaOne.id);
             });
 
             let captchaTwo = Captchas.build();
@@ -252,10 +291,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Country?"
             };
             captchaTwo.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", true, captchaTypeAudio.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", false, captchaTypeAudio.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/65259737766959388428.mp3", true, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/00372156022373196967.mp3", false, captchaTypeAudio.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/26087630137366269179.mp3", false, captchaTypeAudio.id, captchaTwo.id);
             });
 
             let captchaThree = Captchas.build();
@@ -265,10 +304,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Funk?"
             };
             captchaThree.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", false, captchaTypeAudio.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", false, captchaTypeAudio.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", true, captchaTypeAudio.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", false, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", false, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/65259737766959388428.mp3", false, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/00372156022373196967.mp3", true, captchaTypeAudio.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/26087630137366269179.mp3", false, captchaTypeAudio.id, captchaThree.id);
             });
 
             let captchaFour = Captchas.build();
@@ -278,10 +317,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Jazz?"
             };
             captchaFour.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/blues.mp3", false, captchaTypeAudio.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/country.mp3", false, captchaTypeAudio.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/funk.mp3", false, captchaTypeAudio.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/jazz.mp3", true, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82041512139919545726.mp3", false, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/65259737766959388428.mp3", false, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/00372156022373196967.mp3", false, captchaTypeAudio.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/26087630137366269179.mp3", true, captchaTypeAudio.id, captchaFour.id);
             });
 
             let captchaFive = Captchas.build();
@@ -291,10 +330,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Latin?"
             };
             captchaFive.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", true, captchaTypeAudio.id, captchaFive.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", false, captchaTypeAudio.id, captchaFive.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", false, captchaTypeAudio.id, captchaFive.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", false, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82520303551572289611.mp3", true, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/74295011667026589036.mp3", false, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/86029694956883369345.mp3", false, captchaTypeAudio.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/53496824273731590499.mp3", false, captchaTypeAudio.id, captchaFive.id);
             });
 
             let captchaSix = Captchas.build();
@@ -304,10 +343,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Reggae?"
             };
             captchaSix.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", false, captchaTypeAudio.id, captchaSix.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", true, captchaTypeAudio.id, captchaSix.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", false, captchaTypeAudio.id, captchaSix.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", false, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82520303551572289611.mp3", false, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/74295011667026589036.mp3", true, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/86029694956883369345.mp3", false, captchaTypeAudio.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/53496824273731590499.mp3", false, captchaTypeAudio.id, captchaSix.id);
             });
 
             let captchaSeven = Captchas.build();
@@ -317,10 +356,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category Rock?"
             };
             captchaSeven.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", false, captchaTypeAudio.id, captchaSeven.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", false, captchaTypeAudio.id, captchaSeven.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", true, captchaTypeAudio.id, captchaSeven.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", false, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82520303551572289611.mp3", false, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/74295011667026589036.mp3", false, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/86029694956883369345.mp3", true, captchaTypeAudio.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/53496824273731590499.mp3", false, captchaTypeAudio.id, captchaSeven.id);
             });
 
             let captchaEight = Captchas.build();
@@ -330,10 +369,10 @@ class CaptchaManager {
                 en: "Which of these sounds is part of the category slow Blues?"
             };
             captchaEight.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/latin.mp3", false, captchaTypeAudio.id, captchaEight.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/reggae.mp3", false, captchaTypeAudio.id, captchaEight.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/rock.mp3", false, captchaTypeAudio.id, captchaEight.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/slowBlues.mp3", true, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/82520303551572289611.mp3", false, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/74295011667026589036.mp3", false, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/86029694956883369345.mp3", false, captchaTypeAudio.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/53496824273731590499.mp3", true, captchaTypeAudio.id, captchaEight.id);
             });
         });
 
@@ -347,7 +386,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaOne.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/A.png", true, captchaTypeText.id, captchaOne.id, "A");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/61013334536474751632.png", true, captchaTypeText.id, captchaOne.id, "A");
             });
 
             let captchaTwo = Captchas.build();
@@ -357,7 +396,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaTwo.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", true, captchaTypeText.id, captchaTwo.id, "E");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/52821095197328183163.png", true, captchaTypeText.id, captchaTwo.id, "E");
             });
 
             let captchaThree = Captchas.build();
@@ -367,7 +406,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaThree.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/F.png", true, captchaTypeText.id, captchaThree.id, "F");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/52603579661788124576.png", true, captchaTypeText.id, captchaThree.id, "F");
             });
 
             let captchaFour = Captchas.build();
@@ -377,7 +416,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaFour.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", true, captchaTypeText.id, captchaFour.id, "G");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08966119339716475227.png", true, captchaTypeText.id, captchaFour.id, "G");
             });
 
             let captchaFive = Captchas.build();
@@ -387,7 +426,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaFive.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", true, captchaTypeText.id, captchaFive.id, "I");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/82245872344052136603.png", true, captchaTypeText.id, captchaFive.id, "I");
             });
 
             let captchaSix = Captchas.build();
@@ -397,7 +436,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaSix.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/S.png", true, captchaTypeText.id, captchaSix.id, "S");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08984138796650868858.png", true, captchaTypeText.id, captchaSix.id, "S");
             });
 
             let captchaSeven = Captchas.build();
@@ -407,7 +446,7 @@ class CaptchaManager {
                 en: "Which letter is pictured within the following image?"
             };
             captchaSeven.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", true, captchaTypeText.id, captchaSeven.id, "T");
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/85344950047917803942.png", true, captchaTypeText.id, captchaSeven.id, "T");
             });
         });
 
@@ -421,10 +460,10 @@ class CaptchaManager {
                 en: "Drop the missing letter within the drop zone - Complete the word _low"
             };
             captchaOne.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", false, captchaTypeInteractive.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaOne.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", true, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/85344950047917803942.png", false, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/82245872344052136603.png", false, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/52821095197328183163.png", false, captchaTypeInteractive.id, captchaOne.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08966119339716475227.png", true, captchaTypeInteractive.id, captchaOne.id);
             });
 
             let captchaTwo = Captchas.build();
@@ -434,10 +473,10 @@ class CaptchaManager {
                 en: "Drop the missing letter within the drop zone - Complete the word _ea"
             };
             captchaTwo.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", true, captchaTypeInteractive.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaTwo.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/85344950047917803942.png", true, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/82245872344052136603.png", false, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/52821095197328183163.png", false, captchaTypeInteractive.id, captchaTwo.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08966119339716475227.png", false, captchaTypeInteractive.id, captchaTwo.id);
             });
 
             let captchaThree = Captchas.build();
@@ -447,10 +486,10 @@ class CaptchaManager {
                 en: "Drop the missing letter within the drop zone - Complete the word im_tate"
             };
             captchaThree.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/T.png", false, captchaTypeInteractive.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", true, captchaTypeInteractive.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaThree.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/85344950047917803942.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/82245872344052136603.png", true, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/52821095197328183163.png", false, captchaTypeInteractive.id, captchaThree.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08966119339716475227.png", false, captchaTypeInteractive.id, captchaThree.id);
             });
 
             let captchaFour = Captchas.build();
@@ -460,10 +499,10 @@ class CaptchaManager {
                 en: "Drop the missing letter within the drop zone - Complete the word _earch"
             };
             captchaFour.save().then(function() {
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/S.png", true, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/I.png", false, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/E.png", false, captchaTypeInteractive.id, captchaFour.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/G.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08984138796650868858.png", true, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/82245872344052136603.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/52821095197328183163.png", false, captchaTypeInteractive.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/08966119339716475227.png", false, captchaTypeInteractive.id, captchaFour.id);
             });
         });
     }
