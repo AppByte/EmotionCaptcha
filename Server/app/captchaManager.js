@@ -266,6 +266,58 @@ class CaptchaManager {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/40517149129119939501.jpg", false, captchaTypeImage.id, captchaFour.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/57476833332522558578.jpg", false, captchaTypeImage.id, captchaFour.id);
             });
+
+            let captchaFive = Captchas.build();
+            captchaFive.fk_captchas_type = captchaTypeImage.id;
+            captchaFive.context = {
+                de: "Bitte wähle das richtige Bild für das Wort \"Golf\" aus.",
+                en: "Please select the correct image for the word \"Golf\""
+            };
+            captchaFive.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/57600094293782341558.jpg", true, captchaTypeImage.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/40947769658848806978.jpg", false, captchaTypeImage.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/65178145835250743247.jpg", false, captchaTypeImage.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/81953174893417361145.jpg", false, captchaTypeImage.id, captchaFive.id);
+            });
+
+            let captchaSix = Captchas.build();
+            captchaSix.fk_captchas_type = captchaTypeImage.id;
+            captchaSix.context = {
+                de: "Bitte wähle das richtige Bild für das Wort \"Kreuz\" aus.",
+                en: "Please select the correct image for the word \"Kreuz\""
+            };
+            captchaSix.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/42433715845703467101.jpg", true, captchaTypeImage.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/66439332170674103298.jpg", false, captchaTypeImage.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/62097231565730817667.jpg", false, captchaTypeImage.id, captchaSix.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/51478852072440860661.jpg", false, captchaTypeImage.id, captchaSix.id);
+            });
+
+            let captchaSeven = Captchas.build();
+            captchaSeven.fk_captchas_type = captchaTypeImage.id;
+            captchaSeven.context = {
+                de: "Bitte wähle das richtige Bild für das Wort \"Gericht\" aus.",
+                en: "Please select the correct image for the word \"Gericht\""
+            };
+            captchaSeven.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/39452720586432993504.jpg", false, captchaTypeImage.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/73300958861653361623.jpg", true, captchaTypeImage.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/65178145835250743247.jpg", false, captchaTypeImage.id, captchaFive.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/57476833332522558578.jpg", false, captchaTypeImage.id, captchaFour.id);
+            });
+
+            let captchaEight = Captchas.build();
+            captchaEight.fk_captchas_type = captchaTypeImage.id;
+            captchaEight.context = {
+                de: "Bitte wähle das richtige Bild für das Wort \"Mutter\" aus.",
+                en: "Please select the correct image for the word \"Mutter\""
+            };
+            captchaEight.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/39452720586432993504.jpg", false, captchaTypeImage.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/83494088649401378945.jpg", true, captchaTypeImage.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/47579202656580708052.jpg", false, captchaTypeImage.id, captchaEight.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/21826566162590995454.jpg", false, captchaTypeImage.id, captchaEight.id);
+            });
         });
 
         let captchaTypeAudio = CaptchaTypes.build();
