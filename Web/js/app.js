@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#Captcha").emotionCaptcha({
-        languageCode: "en"
+        languageCode: "de"
         //orientation: "bellow",
         //form: "#ExampleForm",
         /*verified: function()
