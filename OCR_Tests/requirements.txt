@@ -1,0 +1,15 @@
+###############
+# Linux setup #
+###############
+
+# Linux apt packages
+tesseract-ocr
+
+# Installed software
+opencv
+python
+
+# Required python packages
+opencv-contrib-python
+pytesseract
+numpy
