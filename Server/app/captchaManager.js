@@ -68,8 +68,6 @@ class CaptchaManager {
             Captchas.findAll({where: {fk_captchas_type: randomCaptchaType}}).then(function (randomCaptchas) {
                 let randomCaptchaIndex =  Crypto.generateRandom(0, randomCaptchas.length - 1);
                 captchaInformation.captchaID = Crypto.generateHashValue(randomCaptchas[randomCaptchaIndex].id);
-                console.log(randomCaptchas[randomCaptchaIndex].context);
-                console.log(randomCaptchas[randomCaptchaIndex].context["de"]);
                 captchaInformation.context = randomCaptchas[randomCaptchaIndex].context[language];
                 CaptchaContent.findAll({
                     where: {
@@ -77,8 +75,10 @@ class CaptchaManager {
                         fk_captchaTypes_id: randomCaptchaType
                     }
                 }).then(function (results) {
+
                     let content = [];
                     for (let i = 0; i < results.length; i++) {
+
 
                         let result = {
                             data: results[i].content,
@@ -302,8 +302,8 @@ class CaptchaManager {
             captchaSeven.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/39452720586432993504.jpg", false, captchaTypeImage.id, captchaSeven.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/73300958861653361623.jpg", true, captchaTypeImage.id, captchaSeven.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/65178145835250743247.jpg", false, captchaTypeImage.id, captchaFive.id);
-                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/57476833332522558578.jpg", false, captchaTypeImage.id, captchaFour.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/65178145835250743247.jpg", false, captchaTypeImage.id, captchaSeven.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/57476833332522558578.jpg", false, captchaTypeImage.id, captchaSeven.id);
             });
 
             let captchaEight = Captchas.build();

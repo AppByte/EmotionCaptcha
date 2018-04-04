@@ -16,7 +16,8 @@ $.fn.emotionCaptcha = function(configuration) {
             unsolvedMessage: "Bitte löse das CAPTCHA",
             nothingSelectedMessage: "Bitte löse das CAPTCHA",
             dropMessage: "Ziehe das richtige Bild hier hinein",
-            enterMessageHere: "Bitte gib deine Antwort ein"
+            enterMessageHere: "Bitte gib deine Antwort ein",
+            verify: "Verifizieren"
         },
         en: {
             audioNotSupported: "Your browser does not support the audio element.",
@@ -25,7 +26,8 @@ $.fn.emotionCaptcha = function(configuration) {
             unsolvedMessage: "Please solve the captcha!",
             nothingSelectedMessage: "Please solve the CAPTCHA",
             dropMessage: "Drop the correct answer here",
-            enterMessageHere: "Please enter your answer"
+            enterMessageHere: "Please enter your answer",
+            verify: "Verify"
         }
     };
 
@@ -140,7 +142,7 @@ $.fn.emotionCaptcha = function(configuration) {
         var rootElement = $("<div class=\"captcha-element\"></div>");
         var textContainer = $("<div class=\"captcha-element-text\"></div>").appendTo(rootElement);
         $(" <label>"+language[configuration.languageCode].verifyMessage+"</label>").appendTo(textContainer);
-        elements.captchaButton = $(" <button type='button' class=\"btn btn-outline-success captcha-element-input\">Verify</button>").appendTo(textContainer);
+        elements.captchaButton = $(" <button type='button' class=\"btn btn-outline-success captcha-element-input\">"+ language[configuration.languageCode].verify+"</button>").appendTo(textContainer);
         return rootElement;
     };
 
@@ -221,7 +223,7 @@ $.fn.emotionCaptcha = function(configuration) {
         elements.captchaContainer = $("<div class='captcha'></div>").appendTo(elements.captchaPopupContainer);
         elements.captchaPopupContainer.append("<div class='captcha-separator'></div>");
         var footerContainer =$("<div class='captcha-foo-container'></div>").appendTo(elements.captchaPopupContainer);
-        elements.captchaUI.verifyButton = $("<button type='button' class='btn btn-captcha-verify-outline captcha-verify-button'>Verify</button>").appendTo(footerContainer);
+        elements.captchaUI.verifyButton = $("<button type='button' class='btn btn-captcha-verify-outline captcha-verify-button'>"+language[configuration.languageCode].verify+"</button>").appendTo(footerContainer);
         elements.captchaUI.reloadButton = $("<a class='captcha-reload-button'><i class='fas fa-sync'></i></a>").appendTo(footerContainer);
 
         elements.captchaUI.verifyButton.click(verifyCaptcha);
