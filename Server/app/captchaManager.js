@@ -604,6 +604,26 @@ class CaptchaManager {
             captchaSeven.save().then(function() {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/85344950047917803942.png", true, captchaTypeText.id, captchaSeven.id, "T");
             });
+
+            let captchaEight = Captchas.build();
+            captchaEight.fk_captchas_type = captchaTypeText.id;
+            captchaEight.context = {
+                de: "Wie viele Würfel werden im nachfolgenden Bild dargestellt?",
+                en: "How many cubes are displayed?"
+            };
+            captchaEight.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/39303015487443820351.png", true, captchaTypeText.id, captchaEight.id, "3");
+            });
+
+            let captchaNine = Captchas.build();
+            captchaNine.fk_captchas_type = captchaTypeText.id;
+            captchaNine.context = {
+                de: "Welche geometrische Form können sie in der Mitte des Bildes erkennen?",
+                en: "Which form can you recognize in the center of this image."
+            };
+            captchaNine.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/images/85817598366167585135.png", true, captchaTypeText.id, captchaNine.id, "Quadrat");
+            });
         });
 
         let captchaTypeInteractive = CaptchaTypes.build();
