@@ -1,0 +1,25 @@
+###############
+# Linux setup #
+###############
+
+# Installed software
+tensorflow
+
+# Installed Repos
+https://github.com/tensorflow/models
+
+# Additional dependencies
+jupyter
+
+# Analyzing
+For the analyzing process the object detection from tensorflow models has been used. It is located within the following structure
+models/research/object_detection
+
+In order to run the notebook please enter the following command:
+jupyter notebook object_detection_tutorial.ipynb
+
+A browser instance will open. Then click on cell -> run all cells 
+This starts the analyzing process. This process may take a while depending on your hardware.
+Before you start the analyzing process locate your test images within the test_images folder. Please make sure your images following the name convention. 
+The default name convention is image1.jpg, image2.jpg and so on. 
+When the analyzing process has finished the result will be displayed within the browser. 
