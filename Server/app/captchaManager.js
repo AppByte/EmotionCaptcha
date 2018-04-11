@@ -530,6 +530,32 @@ class CaptchaManager {
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/86029694956883369345.mp3", false, captchaTypeAudio.id, captchaEight.id);
                 CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/53496824273731590499.mp3", true, captchaTypeAudio.id, captchaEight.id);
             });
+
+            let captchaNine = Captchas.build();
+            captchaNine.fk_captchas_type = captchaTypeAudio.id;
+            captchaNine.context = {
+                de: "Welcher dieser Töne wird zuerst am rechten Ohr wahrgenommen?",
+                en: "Which one of these sounds can be heard first within the right ear?"
+            };
+            captchaNine.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/78179966516574263669.mp3", true, captchaTypeAudio.id, captchaNine.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/86458652988779802478.mp3", false, captchaTypeAudio.id, captchaNine.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/69725144999519392452.mp3", false, captchaTypeAudio.id, captchaNine.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/12988515127984147814.mp3", false, captchaTypeAudio.id, captchaNine.id);
+            });
+
+            let captchaTen = Captchas.build();
+            captchaTen.fk_captchas_type = captchaTypeAudio.id;
+            captchaTen.context = {
+                de: "Welcher dieser Töne wird zuerst am rechten Ohr wahrgenommen?",
+                en: "Which one of these sounds can be heard first within the right ear?"
+            };
+            captchaTen.save().then(function() {
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/77499488190634001152.mp3", true, captchaTypeAudio.id, captchaTen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/14558755719292859097.mp3", false, captchaTypeAudio.id, captchaTen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/69725144999519392452.mp3", false, captchaTypeAudio.id, captchaTen.id);
+                CaptchaManager.createCaptchaContentEntry("http://localhost:3000/data/audio/12988515127984147814.mp3", false, captchaTypeAudio.id, captchaTen.id);
+            });
         });
 
         let captchaTypeText = CaptchaTypes.build();
