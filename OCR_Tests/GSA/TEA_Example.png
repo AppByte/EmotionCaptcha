@@ -1,0 +1,56 @@
+‰PNG
+
+
+[setup]
+engine name=
+alternative names=
+engine type=Other
+success rate=1
+accept same looking chars=0
+description=
+sample captcha=.\TEA_Example.png
+sample url=
+icon file=
+image dimension=
+charset=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+prefered ocr=Auto
+min length=3
+max length=6
+main background color=
+use min size=0
+min size=50
+use max size=0
+max size=50000
+image type=jpg, png, gif
+use fixed chars=0
+use fixed results=0
+use mask chars=0
+
+[fixed chars]
+box start x=0
+box start y=0
+box height=42
+box width=42
+apply image filters=0
+try to solve by filter=0
+
+[fixed results]
+apply image filters=0
+
+[mask chars]
+try to solve by filter=0
+apply image filters=1
+min match score=70
+[PROCESSING1]
+-unsharp 0x5
+-sharpen 0x1
+-contrast 10%
+-colors 2
+-auto-threshold
+-auto-threshold-obj
+-normalize
+-threshold 50%
+-remove-dots2quick
+-sharpen 0x10
+-sharpen 0x30
+
